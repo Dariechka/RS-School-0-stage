@@ -1,4 +1,6 @@
 :root {
+    --color-light-s: #FAFAFA;
+    --color-light-l: #F6F6F6;
     --color-light-xl: #ffffff;
     --color-primary: #F1CDB3;
     --color-dark-s: #CDCDCD;
@@ -16,15 +18,18 @@ html, body {
 * {
     box-sizing: border-box;
 }
-
 .header {
-    width: var(--big-container-width);
-    overflow: hidden;
-    margin: 0 auto;
+    width: 100%;
     background-image: url("./pictures/header.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.container {
+    width: var(--big-container-width);
+    overflow: hidden;
+    margin: 0 auto;
 }
 
 .title {
@@ -109,7 +114,7 @@ html, body {
     width: 310px;
 }
 
-.notOnly__text_button {
+.button {
     background-color: var(--color-primary);
     width: 207px;
     height: 52px;
@@ -177,4 +182,87 @@ html, body {
     font-size: 15px;
     line-height: 24px;
     width: 430px;
+}
+
+.ourFriends {
+    background-color: var(--color-light-l);
+    width: 100%;
+}
+
+.container__ourFriends {
+    padding: 80px 40px 100px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+
+.ourFriends__title {
+    color: var(--color-dark-l);
+    font-family: Georgia;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 45.5px;
+    width: 400px;
+    text-align: center;
+}
+
+.courusel {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.courusel__ribbon {
+    width: 990px;
+    height: 435px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    gap: 90px;
+}
+
+.button__arrow {
+    width: 52px;
+    height: 52px;
+    background-color: transparent;
+    border-radius: 50%;
+    border:  2px solid var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.courusel__ribbon_item {
+    background-color: var(--color-light-s);
+    border-radius: 9px;
+    height: 100%;
+    width: 270px;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.item_img {
+    height: 270px;
+    width: 270px;
+    overflow: hidden;
+}
+
+.item_name {
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: var(--color-dark-l);
+}
+
+.button_item {
+    background-color: transparent;
+    border:  2px solid var(--color-primary);
+    margin-bottom: 30px;
 }
