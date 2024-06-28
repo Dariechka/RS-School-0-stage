@@ -5,6 +5,7 @@
     --color-light-xl: #ffffff;
     --color-primary: #F1CDB3;
     --color-dark-s: #CDCDCD;
+    --color-dark-m: #B2B2B2;
     --color-dark-l: #545454;
     --color-dark-xl: #4C4C4C;
     --color-dark-3xl: #292929;
@@ -53,9 +54,7 @@ html, body {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    
 }
-
 
 .title__left_large {
     margin: 0;
@@ -328,5 +327,60 @@ html, body {
     line-height: 115%;
     text-align: center;
     color: var(--color-dark-l);
+    margin: 0;
+}
+
+.inAddition {
+    width: var(--big-container-width);
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 80px 182px 100px 183px;
+    display: flex;
+    gap: 30px;
+}
+
+.inAddition__img {
+    width: 505px;
+    height: 282px;
+    padding-top: 11px;
+    padding-bottom: 10px;
+}
+
+.inAddition__text {
+    width: 380px;
+    height: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.inAddition__text_titel {
+    font-family: "Georgia";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 130%;
+    color: var(--color-dark-l);
+    margin: 0;
+}
+
+.inAddition__text_bank {
+    font-family: "Georgia";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 110%;
+    color: var(--color-dark-l);
+    margin: 0;
+}
+
+.inAddition__text_description {
+    font-family: "Arial";
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: var(--color-dark-m);
     margin: 0;
 }
