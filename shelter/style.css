@@ -408,7 +408,7 @@ html, body {
 }
 
 .footer__questions {
-    width: 278px;
+    width: 279px;
     height: 100%;
     padding-top: 16px;
     padding-bottom: 60px;
@@ -428,3 +428,32 @@ html, body {
     align-content: space-between;
     gap: 32px;
 }
+
+.footer__title {
+    font-family: "Georgia";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 130%;
+    color: var(--color-light-xl);
+    margin: 0;
+    letter-spacing: 6%;
+}
+
+.footer__block {
+    display: flex;
+    align-items: center;  
+    gap: 20px;
+}
+
+.footer__block_link {
+    font-family: "Georgia";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: var(--color-primary);
+    text-decoration: none;
+    letter-spacing: 6%;
+}
+
