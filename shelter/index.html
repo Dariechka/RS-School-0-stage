@@ -5,23 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shelter</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/normalize.css">
 </head>
 
 <body>
     <header class="header">
-        <div class="container">
-            <div class="title">
-                <div class="title__left">
-                    <h1 class="title__left_large">Cozy House</h1>
-                    <h3 class="title__left_small">Shelter for pets in Boston</h3>
+        <div class="container header__container">
+            <div class="header__box">
+                <div class="header__title">
+                    <h1 class="header__title_large">Cozy House</h1>
+                    <h3 class="header__title_small">Shelter for pets in Boston</h3>
                 </div>
-                <div class="title__right">
-                    <a href="" class="title__right_small" href="">About the shelter</a>
-                    <a href="" class="title__right_small">Our pets</a>
-                    <a href="" class="title__right_small">Help the shelter</a>
-                    <a href="" class="title__right_small">Contacts</a>
-                </div>
+                <nav class="header__navigation">
+                    <ul class="header__navigation_list">
+                        <li><a href="#about" class="header__navigation_item" href="">About the shelter</a></li>
+                        <li><a href="#ourPets" class="header__navigation_item">Our pets</a></li>
+                        <li><a href="#help" class="header__navigation_item">Help the shelter</a></li>
+                        <li><a href="#contacts" class="header__navigation_item">Contacts</a></li>
+                    </ul>
+                </nav>
             </div>
             <section class="notOnly">
                 <div class="notOnly__text">
@@ -38,7 +41,7 @@
         </div>
     </header>
     <main>
-        <section class="about">
+        <section id="about" class="about">
             <div class="about__img">
                 <img src="./pictures/animals.png" alt="cat and dog" class="notOnly__img_puppy">
             </div>
@@ -54,7 +57,7 @@
                 </p>
             </div>
         </section>
-        <section class="ourFriends">
+        <section id="ourPets" class="ourFriends">
             <div class="container">
                 <div class="container__ourFriends">
                     <h2 class="ourFriends__title">Our friends who<br> are looking for a house</h2>
@@ -132,7 +135,7 @@
                 </div>
             </div>
         </section>
-        <section class="help">
+        <section id="help" class="help">
             <h2 class="help__title">How you can help<br> our shelter</h2>
             <div class="help__items">
                 <div class="help__items_item">
@@ -230,7 +233,7 @@
             </div>
         </section>
     </main>
-    <footer class="footer">
+    <footer id="contacts" class="footer">
         <div class="container container__footer">
             <div class="footer__questions">
                 <h2 class="footer__title">For questions<br> and suggestions</h2>

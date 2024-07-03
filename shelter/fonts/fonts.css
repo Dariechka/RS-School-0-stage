@@ -1,15 +1,13 @@
 @font-face {
     font-family: "Georgia";
-    src: local("georgia"),
-      local("georgiat"),
-      url("/fonts/georgia/georgia-regular.ttf") format("ttf");
-    font-weight: normal;
+    font-style: normal;
+    src: local("Georgia"),
+        url("/fonts/georgia/georgia-regular.ttf") format("ttf");
   }
 
   @font-face {
     font-family: "Arial";
-    src: local("arial"),
-      local("arial"),
-      url("/fonts/arial/arial-regular.ttf") format("ttf");
-    font-weight: normal;
+    font-style: normal;
+    src: local("Arial"), 
+        url("/fonts/arial/arial-regular.ttf") format("ttf");
   }
