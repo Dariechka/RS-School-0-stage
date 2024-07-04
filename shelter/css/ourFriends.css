@@ -1,0 +1,29 @@
+.ourFriends {
+    background-color: var(--color-light-l);
+    width: 100%;
+}
+
+.ourFriends__container {
+    padding-top: 78px;
+    padding-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+}
+
+.ourFriends__title {
+    color: var(--color-dark-l);
+    font-family: "Georgia";
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 45px;
+    letter-spacing: 0.06em;
+    width: 400px;
+    text-align: center;
+    margin: 0px;
+    margin-left: 1px;
+}
+
+

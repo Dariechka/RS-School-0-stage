@@ -1,8 +1,11 @@
 @import './fonts/fonts.css';
+@import './button.css';
 @import './container.css';
 @import './header.css';
 @import './notOnly.css';
 @import './about.css';
+@import './ourFriends.css';
+@import './courusel.css';
 
 :root {
     --color-light-s: #FAFAFA;
@@ -30,108 +33,6 @@ html, body {
     height: 100%;
     width: 100%;
     object-fit: cover;
-}
-
-.button {
-    background-color: var(--color-primary);
-    width: 207px;
-    height: 52px;
-    border-radius: 100px;
-    padding: 15px, 45px, 15px, 45px;
-    border: none;
-    font-family: "Georgia";
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 22.1px;
-    color: var(--color-dark-3xl);
-    cursor: pointer;
-    letter-spacing: 0.06em;
-    margin: 0;
-}
-
-.ourFriends {
-    background-color: var(--color-light-l);
-    width: 100%;
-}
-
-.container__ourFriends {
-    padding: 80px 40px 100px;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 60px;
-}
-
-.ourFriends__title {
-    color: var(--color-dark-l);
-    font-family: "Georgia";
-    font-weight: 400;
-    font-size: 35px;
-    line-height: 45.5px;
-    width: 400px;
-    text-align: center;
-}
-
-.courusel {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.courusel__ribbon {
-    width: 990px;
-    height: 435px;
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    gap: 90px;
-}
-
-.button__arrow {
-    width: 52px;
-    height: 52px;
-    background-color: transparent;
-    border-radius: 50%;
-    border:  2px solid var(--color-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-
-.courusel__ribbon_item {
-    background-color: var(--color-light-s);
-    border-radius: 9px;
-    height: 100%;
-    width: 270px;
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.item_img {
-    height: 270px;
-    width: 270px;
-    overflow: hidden;
-}
-
-.item_name {
-    font-family: "Georgia";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 23px;
-    color: var(--color-dark-l);
-}
-
-.button_item {
-    background-color: transparent;
-    border:  2px solid var(--color-primary);
-    margin-bottom: 30px;
-    cursor: pointer;
 }
 
 .help {
