@@ -6,6 +6,7 @@
 @import './about.css';
 @import './ourFriends.css';
 @import './courusel.css';
+@import './help.css';
 
 :root {
     --color-light-s: #FAFAFA;
@@ -33,64 +34,6 @@ html, body {
     height: 100%;
     width: 100%;
     object-fit: cover;
-}
-
-.help {
-    width: var(--big-container-width);
-    overflow: hidden;
-    margin: 0 auto;
-    padding: 80px 40px 100px;
-    display: flex;
-    flex-flow: column wrap;
-    gap: 60px;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.help__title {
-    font-family: "Georgia";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 35px;
-    line-height: 130%;
-    text-align: center;
-    letter-spacing: 0.06em;
-    color: var(--color-dark-l);
-    margin: 0;
-}
-
-.help__items {
-    height: 281px;
-    width: 1026px;
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 120px;
-    row-gap: 55px;
-    justify-content: center;
-    align-content: center; 
-}
-
-.help__items_item {
-    display: flex;
-    flex-flow: column wrap;
-    gap: 30px;
-    justify-content: center;
-}
-
-.help__items_item_icon {
-    display: flex;
-    justify-content: center;
-}
-
-.help__items_item_text {
-    font-family: "Georgia";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 115%;
-    text-align: center;
-    color: var(--color-dark-l);
-    margin: 0;
 }
 
 .inAddition {
