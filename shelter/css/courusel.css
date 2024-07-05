@@ -36,6 +36,13 @@
     align-items: center;
     justify-content: space-between;
     gap: 30px;
+    cursor: pointer;
+    transform: translateY(0);
+    transition: 0.5s ease-out;
+}
+
+.courusel__ribbon_item:hover {
+    transform: translateY(-20px);
 }
 
 .courusel__ribbon_item_img {
@@ -62,6 +69,13 @@
     width: 187px;
     border:  2px solid var(--color-primary);
     margin-bottom: 30px;
+    background: linear-gradient(to left, var(--color-light-l) 50%, var(--color-primary) 50%) right;
+    background-size: 200%;
+    transition: 0.5s ease-out;
+}
+
+.courusel__ribbon_item_button:hover {
+    background-position: left;
 }
 
 .courusel__button {

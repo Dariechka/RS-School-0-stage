@@ -67,7 +67,17 @@
     text-decoration: none;
 }
 
-.header__navigation_item[chosen="true"]:after {
+.header__navigation_item_chosen {
+    margin: 0;
+    font-family: "Arial";
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--color-dark-s);
+    text-decoration: none;
+}
+
+.header__navigation_item_chosen:after {
     content: '';
     display: block;
     position: relative;
@@ -76,7 +86,7 @@
     background-color: var(--color-primary);
 }
 
-.header__navigation_item[chosen="false"]:after {
+.header__navigation_item:after {
     content: '';
     display: block;
     position: relative;
@@ -95,7 +105,7 @@
     }
 }
 
-.header__navigation_item[chosen="false"]:hover:after {
+.header__navigation_item:hover:after {
     animation: go 250ms linear;
     animation-fill-mode: forwards;
 }

@@ -26,6 +26,7 @@
 html, body {
     height: 100vh;
     margin: 0;
+    scroll-behavior: smooth;
 }
 
 * {
@@ -37,4 +38,3 @@ html, body {
     width: 100%;
     object-fit: cover;
 }
-
