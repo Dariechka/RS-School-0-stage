@@ -47,12 +47,12 @@
     width: 1026px;
     display: flex;
     flex-wrap: wrap;
-    gap: 135px;
+    gap: 120px;
     justify-content: center;
     align-content: center; 
 }
 
-.help__items_item {
+.items_item {
     height: 113px;
     display: flex;
     flex-flow: column wrap;
@@ -60,28 +60,40 @@
     justify-content: center;
 }
 
-.help__items_item_first {
+.items_item_food {
     width: 82px;
 }
 
-.help__items_item_second {
+.items_item_transport {
     width: 150px;
 }
 
-.help__items_item_last {
-    width: 101px;
-}
-
-.help__items_item_third {
+.items_item_bowl {
     width: 153px;
 }
 
-.help__items_item_icon {
+.items_item_shampoo {
+    width: 101px;
+}
+
+.items_item_medicine {
+    width: 101px;
+}
+
+.items_item_collars {
+    width: 165px;
+}
+
+.items_item_sleep {
+    width: 143px;
+}
+
+.items_item_icon {
     display: flex;
     justify-content: center;
 }
 
-.help__items_item_text {
+.items_item_text {
     font-family: "Georgia";
     font-style: normal;
     font-weight: 400;
