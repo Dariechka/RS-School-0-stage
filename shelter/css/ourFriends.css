@@ -13,6 +13,11 @@
     gap: 60px;
 }
 
+.ourFriends__container_pets{
+    gap: 45px;
+    padding-top: 80px;
+}
+
 .ourFriends__title {
     color: var(--color-dark-l);
     font-family: "Georgia";
