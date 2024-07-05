@@ -1,6 +1,6 @@
 .footer {
     width: 100%;
-    background: url("./pictures/header.png"), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
+    background: url("../pictures/header.png"), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

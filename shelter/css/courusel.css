@@ -91,3 +91,26 @@
 .courusel__button {
     width: 261px;
 }
+
+.courusel__pages {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.courusel__pages_number {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Georgia";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.06em;
+    color: var(--color-dark-3xl);
+}

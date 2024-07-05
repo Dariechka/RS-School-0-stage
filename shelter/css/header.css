@@ -89,22 +89,21 @@
     color: var(--color-dark-l);
 }
 
-
-.header__navigation_item_chosen {
+.header__navigation_item_active {
     margin: 0;
     font-family: "Arial";
     font-weight: 400;
     font-size: 15px;
     line-height: 24px;
-    color: var(--color-dark-s);
+    color: var(--color-light-s);
     text-decoration: none;
 }
 
-.header__navigation_item_chosen_pets {
+.header__navigation_item_active_pets {
     color: var(--color-dark-l);
 }
 
-.header__navigation_item_chosen:after {
+.header__navigation_item_active:after {
     content: '';
     display: block;
     position: relative;
@@ -132,12 +131,11 @@
     }
 }
 
+.header__navigation_item:hover {
+    color: var(--color-light-s);
+}
+
 .header__navigation_item:hover:after {
     animation: go 250ms linear;
     animation-fill-mode: forwards;
 }
-
-
-
-
-
