@@ -27,6 +27,7 @@
 }
 
 .courusel__ribbon_pets {
+    padding-top: 15px;
     width: 1200px;
     height: 930px;
     display: grid;

@@ -89,27 +89,24 @@
     color: var(--color-dark-l);
 }
 
-.header__navigation_item_active {
-    margin: 0;
-    font-family: "Arial";
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 24px;
+.active {
     color: var(--color-light-s);
-    text-decoration: none;
+    cursor: default;
 }
 
-.header__navigation_item_active_pets {
+.active_pets {
     color: var(--color-dark-l);
+    cursor: default;
 }
 
-.header__navigation_item_active:after {
+.active:after {
     content: '';
     display: block;
     position: relative;
     top: 10%;
     height: 3px;
     background-color: var(--color-primary);
+    cursor: default;
 }
 
 .header__navigation_item:after {
