@@ -1,4 +1,4 @@
-@import '/fonts/fonts.css';
+@import '../fonts/fonts.css';
 @import './button.css';
 @import './container.css';
 @import './header.css';
