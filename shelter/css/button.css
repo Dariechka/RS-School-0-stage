@@ -1,0 +1,22 @@
+.button {
+    background-color: var(--color-primary);
+    width: 207px;
+    height: 52px;
+    border-radius: 100px;
+    padding: 15px, 45px, 15px, 45px;
+    cursor: pointer;
+    border: none;
+    font-family: "Georgia";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 22px;
+    color: var(--color-dark-3xl);
+    letter-spacing: 0.06em;
+    margin: 0;
+}
+
+.button:hover {
+    background-color: var(--color-primary-light);
+    
+}

@@ -1,0 +1,41 @@
+@import '/fonts/fonts.css';
+@import './button.css';
+@import './container.css';
+@import './header.css';
+@import './notOnly.css';
+@import './about.css';
+@import './ourFriends.css';
+@import './courusel.css';
+@import './help.css';
+@import './inAddition.css';
+@import './footer.css';
+
+:root {
+    --color-light-s: #FAFAFA;
+    --color-light-l: #F6F6F6;
+    --color-light-xl: #ffffff;
+    --color-primary: #F1CDB3;
+    --color-primary-light: #FDDCC4;
+    --color-dark-s: #CDCDCD;
+    --color-dark-m: #B2B2B2;
+    --color-dark-l: #545454;
+    --color-dark-xl: #4C4C4C;
+    --color-dark-3xl: #292929;
+    --big-container-width: 1280px;
+}
+
+html, body {
+    height: 100vh;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
