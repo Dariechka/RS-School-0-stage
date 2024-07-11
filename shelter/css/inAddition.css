@@ -49,6 +49,21 @@
 
 .inAddition__text_link {
     height: 43px;
+    width: 349px;
+    border-radius: 9px;
+    padding: 10px 15px;
+    background-color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    font-family: "Georgia";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.06em;
+    color: var(--color-dark-l);
 }
 
 .inAddition__text_description {

@@ -17,6 +17,21 @@
     cursor: pointer;
 }
 
+.courusel__button_arrow:hover {
+    background-color: var(--color-primary-light);
+    border:  2px solid var(--color-primary-light);
+}
+
+.courusel__button_arrow[disabled] {
+    border:  2px solid var(--color-dark-s);
+    cursor: default;
+}
+
+.courusel__button_arrow[disabled]:hover {
+    border:  2px solid var(--color-dark-s);
+    background-color: transparent;
+}
+
 .courusel__ribbon {
     width: 990px;
     height: 435px;
@@ -48,12 +63,12 @@
     justify-content: space-between;
     gap: 30px;
     cursor: pointer;
-    transform: translateY(0);
     transition: 0.5s ease-out;
 }
 
 .courusel__ribbon_item:hover {
-    transform: translateY(-20px);
+    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+    background-color: var(--color-light-xl);
 }
 
 .courusel__ribbon_item_img {
@@ -80,17 +95,22 @@
     width: 187px;
     border:  2px solid var(--color-primary);
     margin-bottom: 30px;
-    background: linear-gradient(to left, var(--color-light-l) 50%, var(--color-primary) 50%) right;
+    background: linear-gradient(to left, var(--color-light-s) 50%, var(--color-primary-light) 50%) right;
     background-size: 200%;
     transition: 0.5s ease-out;
 }
 
-.courusel__ribbon_item_button:hover {
+.courusel__ribbon_item:hover .courusel__ribbon_item_button {
     background-position: left;
+    border:  2px solid var(--color-primary-light);
 }
 
 .courusel__button {
     width: 261px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
 }
 
 .courusel__pages {
@@ -114,4 +134,9 @@
     line-height: 23px;
     letter-spacing: 0.06em;
     color: var(--color-dark-3xl);
+}
+
+.courusel__pages_number:hover {
+    background-color: var(--color-primary-light);
+    border:  2px solid var(--color-primary-light);
 }

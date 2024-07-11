@@ -15,3 +15,8 @@
     letter-spacing: 0.06em;
     margin: 0;
 }
+
+.button:hover {
+    background-color: var(--color-primary-light);
+    
+}
