@@ -135,10 +135,4 @@
     line-height: 23px;
     letter-spacing: 0.06em;
     color: var(--color-dark-3xl);
-    transition: 0.5s ease-out;
-}
-
-.courusel__pages_number:hover {
-    background-color: var(--color-primary-light);
-    border:  2px solid var(--color-primary-light);
 }
