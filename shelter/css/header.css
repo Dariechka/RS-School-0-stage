@@ -43,10 +43,20 @@
     line-height: 35.2px;
     letter-spacing: 0.06em;
     color: var(--color-primary);
+    transition: 0.5s ease-out;
+}
+
+.header__title_large:hover {
+    color: var(--color-light-s)
 }
 
 .header__title_large_pets {
+    transition: 0.5s ease-out;
     color: var(--color-dark-l);
+}
+
+.header__title_large_pets:hover {
+    color: var(--color-dark-3xl);
 }
 
 .header__title_small {
@@ -59,9 +69,18 @@
     letter-spacing: 0.1em;
     color: var(--color-light-xl);
     margin-left: 3px;
+    transition: 0.5s ease-out;
+}
+
+.header__title_small:hover {
+    color: var(--color-light-s)
 }
 
 .header__title_small_pets {
+    color: var(--color-dark-3xl);
+}
+
+.header__title_small_pets:hover {
     color: var(--color-dark-3xl);
 }
 
@@ -85,7 +104,7 @@
     line-height: 24px;
     color: var(--color-dark-s);
     text-decoration: none;
-    transition: 0.3s;
+    transition: 0.5s ease-out;
 }
 
 .header__navigation_item:hover {
@@ -100,7 +119,7 @@
     line-height: 24px;
     text-decoration: none;
     color: var(--color-dark-l);
-    transition: 0.3s;
+    transition: 0.5s ease-out;
 }
 
 .header__navigation_item_pets:hover {
@@ -113,12 +132,12 @@
 }
 
 .active_pets {
-    color: var(--color-dark-l);
+    color: var(--color-dark-3xl);
     cursor: default;
 }
 
 .active_pets:hover {
-    color: var(--color-dark-l);
+    color: var(--color-dark-3xl);
     cursor: default;
 }
 
@@ -140,4 +159,8 @@
     height: 3px;
     background-color: var(--color-primary);
     cursor: default;
+}
+
+.header__burger-menu {
+    display: none;
 }
