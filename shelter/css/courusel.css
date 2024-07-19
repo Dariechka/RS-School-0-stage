@@ -15,7 +15,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.5s ease-out;
 }
 
 .courusel__button_arrow:hover {
@@ -135,7 +135,7 @@
     line-height: 23px;
     letter-spacing: 0.06em;
     color: var(--color-dark-3xl);
-    transition: 0.3s;
+    transition: 0.5s ease-out;
 }
 
 .courusel__pages_number:hover {
