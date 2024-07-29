@@ -64,6 +64,11 @@
     line-height: 23px;
     letter-spacing: 0.06em;
     color: var(--color-dark-l);
+    transition: 0.5s ease-out;
+}
+
+.inAddition__text_link:hover {
+    background-color: var(--color-primary-light);
 }
 
 .inAddition__text_description {
