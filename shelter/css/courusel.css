@@ -211,6 +211,10 @@
         margin-top: 20px;
     }
 
+    .courusel__button_arrow_pets {
+        margin-top: 0px;
+    }
+
     .courusel__ribbon {
         width: 270px;
         gap: 40px;
