@@ -31,4 +31,35 @@
     margin-left: 1px;
 }
 
+@media screen and (max-width: 1279px) and (min-width: 768px) {
+    .ourFriends__container {
+        padding-top: 80px;
+    }
 
+    .ourFriends__container_pets{
+        gap: 30px;
+        padding: 80px 94px 76px;
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 320px) {
+    .ourFriends__container {
+        padding-top: 42px;
+        padding-bottom: 42px;
+        gap: 42px;
+    }
+
+    .ourFriends__container_pets{
+        gap: 42px;
+        padding-bottom: 42px;
+        padding-top: 42px;
+    }
+
+    .ourFriends__title {
+        font-size: 25px;
+        line-height: 32px;
+        width: 300px;
+        text-align: center;
+        margin: 0px;
+    }
+}

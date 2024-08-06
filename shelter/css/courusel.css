@@ -18,19 +18,9 @@
     transition: 0.5s ease-out;
 }
 
-.courusel__button_arrow:hover {
-    background-color: var(--color-primary-light);
-    border:  2px solid var(--color-primary-light);
-}
-
 .courusel__button_arrow[disabled] {
     border:  2px solid var(--color-dark-s);
     cursor: default;
-}
-
-.courusel__button_arrow[disabled]:hover {
-    border:  2px solid var(--color-dark-s);
-    background-color: transparent;
 }
 
 .courusel__ribbon {
@@ -40,6 +30,12 @@
     display: flex;
     justify-content: space-between;
     gap: 90px;
+    scroll-snap-type: x mandatory;
+    transition: all 0.3s ease-in-out;
+}
+
+.courusel_pets {
+    overflow: hidden;
 }
 
 .courusel__ribbon_pets {
@@ -65,11 +61,6 @@
     gap: 30px;
     cursor: pointer;
     transition: 0.5s ease-out;
-}
-
-.courusel__ribbon_item:hover {
-    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
-    background-color: var(--color-light-xl);
 }
 
 .courusel__ribbon_item_img {
@@ -101,11 +92,6 @@
     transition: 0.5s ease-out;
 }
 
-.courusel__ribbon_item:hover .courusel__ribbon_item_button {
-    background-position: left;
-    border:  2px solid var(--color-primary-light);
-}
-
 .courusel__button {
     width: 261px;
     display: flex;
@@ -135,4 +121,125 @@
     line-height: 23px;
     letter-spacing: 0.06em;
     color: var(--color-dark-3xl);
+}
+
+@media (hover){
+    .courusel__button_arrow:hover {
+        background-color: var(--color-primary-light);
+        border:  2px solid var(--color-primary-light);
+    }
+
+    .courusel__button_arrow[disabled]:hover {
+        border:  2px solid var(--color-dark-s);
+        background-color: transparent;
+    }
+
+    .courusel__ribbon_item:hover {
+        box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+        background-color: var(--color-light-xl);
+    }
+
+    .courusel__ribbon_item:hover .courusel__ribbon_item_button {
+        background-position: left;
+        border:  2px solid var(--color-primary-light);
+    }
+}
+
+@media screen and (max-width: 1279px) and (min-width: 1100px) {
+    .courusel__ribbon {
+        width: 890px;
+        height: 435px;
+        gap: 40px;
+    }
+
+    .courusel_pets {
+        width: 890px;
+    }
+
+    .courusel__ribbon_pets {
+        padding-top: 0px;
+        height: 930px;
+        width: 890px;
+        display: grid;
+        grid-template-columns: repeat(3, 270px);
+        grid-template-rows: repeat(2, 435px);
+        column-gap: 40px;
+        row-gap: 30px;
+    }
+}
+
+@media screen and (max-width: 1099px) and (min-width: 768px) {
+    .courusel__ribbon {
+        width: 580px;
+        height: 435px;
+        gap: 40px;
+    }
+
+    .courusel_pets {
+        width: 580px;
+    }
+
+    .courusel__ribbon_pets {
+        padding-top: 0px;
+        width: 580px;
+        height: 1365px;
+        display: grid;
+        grid-template-columns: repeat(2, 270px);
+        grid-template-rows: repeat(3, 435px);
+        column-gap: 40px;
+        row-gap: 30px;
+    }
+
+    .courusel__pages {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 320px) {
+    .courusel {
+        width: 270px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .courusel_pets {
+        width: 270px;
+    }
+    
+    .courusel__button_arrow {
+        margin-top: 20px;
+    }
+
+    .courusel__ribbon {
+        width: 270px;
+        gap: 40px;
+        order: -1;
+    } 
+
+    .button_arrow_left {
+        margin-right: 40px;
+    }
+
+    .button_arrow_right {
+        margin-left: 40px;
+    }
+
+    .courusel__ribbon_pets {
+        padding-top: 0px;
+        width: 270px;
+        height: 1365px;
+        display: grid;
+        grid-template-columns: 270px;
+        grid-template-rows: repeat(3, 435px);
+        column-gap: 0px;
+        row-gap: 30px;
+    }
+
+    .courusel__pages {
+       width: 300px;
+       gap: 10px;
+       align-items: center;
+       height: 52px;
+    }
 }
