@@ -54,3 +54,126 @@
     justify-content: center;
     align-items: center;
 }
+
+@media screen and (max-width: 1278px) and (min-width: 800px) {
+    .notOnly {
+        margin-top: 60px;
+    }
+
+    .notOnly__container {
+        height: 1015px;
+        padding-left: 69px;
+        display: flex;
+        flex-direction: column;
+        align-content: space-between;
+        justify-content: space-between;
+        gap: 100px;
+    }
+
+    .notOnly__img {
+        height: 593px;
+        width: 569px;
+        align-self: flex-end;
+    }
+
+    .notOnly__text {
+        padding-top: 0px;
+        width: 100%;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: flex-start;
+        align-content: space-between;
+        gap: 42px;
+    }
+
+    .title__right_small {
+        width: 100%;
+    }
+    
+    .notOnly__button {
+        align-self: center;
+    }
+}
+
+@media screen and (max-width: 799px) and (min-width: 768px) {
+    .notOnly {
+        margin-top: 60px;
+    }
+
+    .notOnly__container {
+        height: 1015px;
+        padding-left: 124px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        gap: 100px;
+    }
+
+    .notOnly__img {
+        height: 593px;
+        width: 569px;
+        margin-left: 15px;
+    }
+
+    .notOnly__text {
+        padding-top: 0px;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: flex-start;
+        align-content: space-between;
+        gap: 42px;
+    }
+
+    .notOnly__button {
+        align-self: center;
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 320px) {
+    .notOnly {
+        margin-top: 60px;
+    }
+    
+    .notOnly__container {
+        height: 673px;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: flex-end;
+        align-content: space-between;
+        gap: 105px;
+    }
+    
+    .notOnly__img {
+        height: 271.77px;
+        width: 260px;
+        align-self: flex-end;
+    }
+    
+    .notOnly__text {
+        padding-top: 0cqw;
+        width: 100%;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-content: space-between;
+    }
+    
+    .notOnly__text_large {
+        font-size: 25px;
+        line-height: 32px;
+        letter-spacing: 0.06em;
+        width: 100%;
+        text-align: center;
+    }
+
+    .title__right_small {
+        font-size: 15px;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .notOnly__button {
+        align-self: center;
+    }
+}
