@@ -106,4 +106,200 @@
     text-align: center;
 }
 
+@media screen and (max-width: 1200px) and (min-width: 768px) {
+    .help__container {
+        padding-left: 69px;
+        padding-right: 69px;
+    }
 
+    .help__items {
+        margin-top: 84px;
+        width: 630px;
+        height: 449px;
+        margin-bottom: -84px;
+    }
+
+    .help__items_first {
+        width: 630px;
+        display: grid;
+        grid-area: first;
+        grid-template-columns: 170px 170px 170px;
+        grid-template-rows: 113px 113px;
+        grid-template-areas: 
+            "food transport ball"
+            "bowl shampoo  none";
+        column-gap: 60px;
+        row-gap: 55px;
+    }
+    
+    .help__items_second {
+        width: 630px;
+        display: grid;
+        grid-area: second;
+        grid-template-columns: 170px 170px 170px;
+        grid-template-rows: 113px 113px;
+        grid-template-areas: 
+            "none none  vitamins"
+            "medicine collars sleep";
+        column-gap: 60px;
+        row-gap: 55px;
+    }
+
+    .items_item_food {
+        width: 170px;
+        grid-area: food;
+    }
+    
+    .items_item_transport {
+        width: 170px;
+        grid-area: transport;
+    }
+
+    .items_item_ball{
+        grid-area: ball;
+    }
+    
+    .items_item_bowl {
+        width: 170px;
+        grid-area: bowl;
+    }
+    
+    .items_item_shampoo {
+        width: 170px;
+        grid-area: shampoo;
+    }
+
+    .items_item_vitamins {
+        grid-area: vitamins;
+    }
+    
+    .items_item_medicine {
+        width: 170px;
+        grid-area: medicine;
+    }
+    
+    .items_item_collars {
+        width: 170px;
+        grid-area: collars;
+    }
+    
+    .items_item_sleep {
+        width: 170px;
+        grid-area: sleep;
+    }
+    
+    .items_item_text {
+        font-size: 20px;
+        letter-spacing: 0.06em;
+        font-stretch: extra-expanded;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 320px) {
+    .help__container {
+        padding: 42px 15px 0px;
+        gap: 42px;
+    }
+
+    .help__title {
+        font-size: 25px;
+        line-height: 32px;
+    }
+
+    .help__items {
+        margin-top: 90px;
+        width: 290px;
+        height: 555px;
+        margin-bottom: -48px;
+    }
+
+    .item_icon_svg {
+        height: 50px;
+        width: 50px;
+    }
+
+    .help__items_first {
+        width: 290px;
+        display: grid;
+        grid-area: first;
+        grid-template-columns: 130px 130px;
+        grid-template-rows: 87px 87px 87px;
+        grid-template-areas: 
+            "food transport"
+            "ball bowl"
+            "shampoo  none";
+        column-gap: 30px;
+        row-gap: 30px;
+    }
+    
+    .help__items_second {
+        margin-top: 68px;
+        width: 290px;
+        display: grid;
+        grid-area: first;
+        grid-template-columns: 130px 130px;
+        grid-template-rows: 87px 87px 87px;
+        grid-template-areas:  
+            "none vitamins"
+            "medicine collars"
+            "sleep .";
+        column-gap: 30px;
+        row-gap: 30px;
+    }
+
+    .items_item {
+        gap: 20px;
+    }
+
+    .items_item_food {
+        width: 130px;
+        grid-area: food;
+    }
+    
+    .items_item_transport {
+        width: 130px;
+        grid-area: transport;
+    }
+
+    .items_item_ball{
+        grid-area: ball;
+    }
+    
+    .items_item_bowl {
+        width: 130px;
+        grid-area: bowl;
+    }
+    
+    .items_item_shampoo {
+        width: 130px;
+        grid-area: shampoo;
+    }
+
+    .items_item_vitamins {
+        grid-area: vitamins;
+    }
+    
+    .items_item_medicine {
+        width: 130px;
+        grid-area: medicine;
+    }
+    
+    .items_item_collars {
+        width: 130px;
+        grid-area: collars;
+    }
+    
+    .items_item_sleep {
+        width: 130px;
+        grid-area: sleep;
+    }
+    
+    .items_item_text {
+        font-size: 15px;
+        letter-spacing: 0.06em;
+        font-stretch: extra-expanded;
+        line-height: 17px;
+        width: 100%;
+    }
+}

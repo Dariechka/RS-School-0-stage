@@ -1,0 +1,101 @@
+.burger-menu {
+    display: none;
+}
+
+@media screen and (max-width: 767px) and (min-width: 320px) {
+    .background {
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        background-color: #C4C4C4;
+        opacity: 0.5; 
+    }
+
+    .burger-menu {
+        display: block;
+        width: 320px;
+        height: 100vh;
+        top: 0px;
+        right: 0px;
+        background-color: var(--color-dark-3xl);
+        padding: 248px 38px 0px 39px;
+        position: fixed;
+        transform: translateX(100vw);
+        transition: transform 0.5s linear;
+    }
+
+    .burger-menu_pets {
+        background-color: var(--color-light-xl);
+    }
+
+    .burger-menu[data-open] {
+        transform: translateX(0);
+    }
+
+    .burger-menu[data-open] body {
+        overflow: visible;
+    }
+
+    .burger-menu[data-open] .background {
+        display: block;
+    }
+
+    .burger-menu__navigation_list {
+        margin: 0;
+        width: 234px;
+        list-style-type: none;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        gap: 40px;
+        padding-left: 0px;
+        text-align: center;
+    }
+
+    .burger-menu__navigation_item {
+        margin: 0;
+        font-family: "Arial";
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 51px;
+        color: var(--color-dark-s);
+        text-decoration: none;
+        text-align: center;
+    }
+
+    .burger-menu__navigation_item_pets {
+        color: var(--color-dark-l);
+    }
+
+    .burger-active {
+        color: var(--color-light-s);
+        cursor: default;
+    }
+
+    .burger-active_pets {
+        color: var(--color-dark-3xl);
+        cursor: default;
+    }
+
+    .burger-active::after {
+        content: '';
+        display: block;
+        position: relative;
+        top: 10%;
+        height: 3px;
+        background-color: var(--color-primary);
+        cursor: default;
+    }
+
+    @media (hover){
+        .burger-menu__navigation_item:hover {
+            color: var(--color-light-s);
+        }
+               
+        .burger-menu__navigation_item_pets:hover {
+            color: var(--color-dark-3xl);
+        }
+    }
+}
+

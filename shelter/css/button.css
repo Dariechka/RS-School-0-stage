@@ -17,6 +17,8 @@
     transition: 0.5s ease-out;
 }
 
-.button:hover {
-    background-color: var(--color-primary-light);
+@media (hover){
+    .button:hover {
+        background-color: var(--color-primary-light);
+    }
 }

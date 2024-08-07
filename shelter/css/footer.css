@@ -68,13 +68,118 @@
     transition: 0.5s ease-out;
 }
 
-.block_link:hover {
-    color: var(--color-light-xl);
-}
-
 .footer__place_block {
     display: flex;
     align-items: center;  
     gap: 20px;
 }
 
+@media (hover){
+    .block_link:hover {
+        color: var(--color-light-xl);
+    }
+}
+
+@media screen and (max-width: 1279px) and (min-width: 768px) {
+    .footer__container {
+        padding-top: 30px;
+        display: flex;
+        row-gap: 60px;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    
+    .footer__img {
+        align-self: center;
+        height: 310px;
+    }
+
+    .footer__title {
+        letter-spacing: 0.05em;
+        padding-left: 2px;
+    }
+    
+    .footer__questions {
+        width: 278px;
+        height: 234px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        gap: 40px;
+    }
+    
+    .footer__place {
+        height: 237px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        display: flex;
+        flex-flow: column wrap;
+        align-content: space-between;
+        gap: 32px;
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 320px) {
+    .footer__container {
+        padding-top: 30px;
+        display: flex;
+        flex-flow: column wrap;
+        align-content: center;
+        row-gap: 40px;
+    }
+    
+    .footer__img {
+        width: 260px;
+        height: 264px;
+        align-self: center;
+    }
+    
+    .footer__questions {
+        width: 278px;
+        height: 208px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        align-content: space-between;
+        justify-content: center;
+    }
+    
+    .footer__place {
+        width: 300px;
+        height: 227px;
+        padding-top: 0px;
+        padding-bottom: 3px;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-between;
+    }
+    
+    .footer__title {
+        font-size: 25px;
+        line-height: 32px;
+        text-align: center;
+        width: 278px;
+        padding-left: 21px;
+    }
+
+    .footer__place_block {
+        display: flex;
+        align-items: center;  
+        gap: 20px;
+    }
+
+    .footer__questions_block {
+        align-self: center;
+        padding-left: 21px;
+    }
+
+    .footer__place > .footer__title {
+        width: 270px;
+        align-self: center;
+        font-size: 26px;
+        letter-spacing: 0.04em;
+        padding-left: 0px;
+    }
+
+    .footer__place_block > .block_link {
+        width: 258.28px;
+    }
+}
