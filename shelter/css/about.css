@@ -102,6 +102,7 @@
         flex-direction: column;
         flex-wrap: nowrap;
         padding: 0px 15px;
+        gap: 24px;
     }
 
     .about__text_large {
