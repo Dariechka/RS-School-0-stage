@@ -21,6 +21,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden;
 }
 
 .header__title {
@@ -44,17 +45,9 @@
     transition: 0.5s ease-out;
 }
 
-.header__title_large:hover {
-    color: var(--color-light-s)
-}
-
 .header__title_large_pets {
     transition: 0.5s ease-out;
     color: var(--color-dark-l);
-}
-
-.header__title_large_pets:hover {
-    color: var(--color-dark-3xl);
 }
 
 .header__title_small {
@@ -70,15 +63,7 @@
     transition: 0.5s ease-out;
 }
 
-.header__title_small:hover {
-    color: var(--color-light-s)
-}
-
 .header__title_small_pets {
-    color: var(--color-dark-3xl);
-}
-
-.header__title_small_pets:hover {
     color: var(--color-dark-3xl);
 }
 
@@ -91,7 +76,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 0; 
+    padding: 0;
 }
 
 .header__navigation_item {
@@ -105,10 +90,6 @@
     transition: 0.5s ease-out;
 }
 
-.header__navigation_item:hover {
-    color: var(--color-light-s);
-}
-
 .header__navigation_item_pets {
     margin: 0;
     font-family: "Arial";
@@ -120,21 +101,12 @@
     transition: 0.5s ease-out;
 }
 
-.header__navigation_item_pets:hover {
-    color: var(--color-dark-3xl);
-}
-
 .active {
     color: var(--color-light-s);
     cursor: default;
 }
 
 .active_pets {
-    color: var(--color-dark-3xl);
-    cursor: default;
-}
-
-.active_pets:hover {
     color: var(--color-dark-3xl);
     cursor: default;
 }
@@ -162,3 +134,99 @@
 .header__burger-menu {
     display: none;
 }
+
+.burger-menu {
+    display: none;
+}
+
+@media (hover){
+    .header__title_large:hover {
+        color: var(--color-light-s)
+    }
+
+    .header__title_large_pets:hover {
+        color: var(--color-dark-3xl);
+    }
+
+    .header__title_small:hover {
+        color: var(--color-light-s)
+    }
+
+    .header__title_small_pets:hover {
+        color: var(--color-dark-3xl);
+    }
+
+    .header__navigation_item:hover {
+        color: var(--color-light-s);
+    }
+
+    .header__navigation_item_pets:hover {
+        color: var(--color-dark-3xl);
+    }
+
+    .active_pets:hover {
+        color: var(--color-dark-3xl);
+        cursor: default;
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 320px) {
+    .header__navigation {
+        display: none;
+    }
+
+    .header__container {
+        padding-left: 10px;
+        padding-top: 33px;
+    }
+
+    .header__box {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .header__title_small {
+        margin: 0;
+        font-family: "Arial";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 15px;
+        letter-spacing: 0.1em;
+        margin-left: 3px;
+    }
+
+    .header__burger-menu {
+        display: block;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0px;
+        width: 30px;
+        height: 22px;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-between;
+        z-index: 999;
+        transform: rotate(0);
+        transition: transform 0.5s linear;
+    }
+
+    .header__burger-menu[data-open] {
+        transform: rotate(-90deg);
+    }
+
+    .burger-menu_line {
+        width: 30px;
+        height: 2px;
+        background-color: var(--color-primary);
+    }
+
+    .burger-menu_line-pets {
+        background-color: #000000;
+    }
+}
+
+
+
+

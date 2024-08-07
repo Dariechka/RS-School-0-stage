@@ -9,6 +9,7 @@
 @import './help.css';
 @import './inAddition.css';
 @import './footer.css';
+@import './burger-menu.css';
 
 :root {
     --color-light-s: #FAFAFA;
@@ -38,4 +39,8 @@ html, body {
     height: 100%;
     width: 100%;
     object-fit: cover;
+}
+
+.no-scroll {
+    overflow: hidden;
 }
