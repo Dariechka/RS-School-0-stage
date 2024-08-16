@@ -41,7 +41,7 @@ async function fetchPets() {
 }
 
 function chooseRandomPets(pets, number) {
-    //if (pets.length <= number) return pets;
+    if (pets.length <= number) return pets;
 
     const cloned = [...pets];
 
