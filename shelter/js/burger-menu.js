@@ -1,7 +1,7 @@
 const menu = document.querySelector('.burger-menu');
 const button = document.querySelector('.header__burger-menu');
 const body = document.body;
-const links = [...document.querySelectorAll('.burger-menu__navigation_item')];
+const links = document.querySelectorAll('.burger-menu__navigation_item');
 const background = document.querySelector('.background');
 
 function closeMenu() {
@@ -25,7 +25,7 @@ button.addEventListener('click', function () {
         background.style.display = 'block';
 
         body.addEventListener('click', function closeMenuOnBodyClick(event) {
-            if (event.target.closest('.header__burger-menu') || (event.target.closest('.burger-menu') && !links.includes(event.target))) {
+            if (button.contains(event.target) || menu.contains(event.target)) {
                 return;
             }
             closeMenu();
