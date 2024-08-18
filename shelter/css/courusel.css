@@ -30,8 +30,10 @@
     display: flex;
     justify-content: space-between;
     gap: 90px;
-    scroll-snap-type: x mandatory;
-    transition: all 0.3s ease-in-out;
+}
+
+.ribbon_scroll {
+    scroll-behavior: smooth;
 }
 
 .courusel_pets {
