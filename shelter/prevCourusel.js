@@ -122,7 +122,6 @@
             ribbon.scrollLeft += document.querySelector('.courusel').clientWidth;
             ribbon.classList.add('ribbon_scroll');
             ribbon.scrollLeft -= document.querySelector('.courusel').clientWidth;
-            // delete prev
         } else if (prevStep === 'left') {
             previousState = (queryRenderedPets()).filter((item, index) => index <= (calculateScreenCapacity() - 1));
             const pets = chooseRandomPets(remainderPets(), calculateScreenCapacity());

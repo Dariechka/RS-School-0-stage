@@ -8,8 +8,6 @@
 
     let previousState = [];
     let prevStep;
-
-    let skipClick = false;
     
     // function declarations
     async function fetchPets() {
@@ -18,7 +16,7 @@
     }
     
     function renderCards(pets, place) {
-        for (const pet of place === 'beforeend' ? pets : pets.reverse()) {
+        for (const pet of pets) {
             ribbon.insertAdjacentHTML(
                 `${place}`,
                 `<div class="courusel__ribbon_item">
@@ -32,26 +30,58 @@
         }
     }
 
-    function scroll(translation, immediate = false) {
-        for (const card of ribbon.children) {
-            if (immediate) {
-                card.classList.remove('ribbon_scroll');
-            } else {
-                card.classList.add('ribbon_scroll');
+    function scroll(place) {
+        switch (place) {
+            case 'beforeend': {
+                ribbon.classList.remove('ribbon_scroll');
+                ribbon.scrollLeft -= calculateScrollLength();
+                ribbon.classList.add('ribbon_scroll');
+                ribbon.scrollLeft += calculateScrollLength();
             }
-            card.style.transform = 'translateX(' + translation + 'px)';
+            break;
+            case 'afterbegin': {
+                ribbon.classList.remove('ribbon_scroll');
+                ribbon.scrollLeft += calculateScrollLength();
+                ribbon.classList.add('ribbon_scroll');
+                ribbon.scrollLeft -= calculateScrollLength();
+            }
+            break;
         }
     }
+
+    // async function cleanup(place) {
+    //     return await new Promise(resolve => setTimeout(() => {
+    //         switch (place) {
+    //             case 'beforeend': {
+    //                 for (let i = 0; i < calculateScreenCapacity(); i += 1) {
+    //                     ribbon.removeChild(ribbon.firstChild);
+    //                 }
+    //                 ribbon.classList.remove('ribbon_scroll');
+    //                 ribbon.scrollLeft -= calculateScrollLength();
+    //             }
+    //             break;
+    //             case 'afterbegin': {
+    //                 for (let i = 0; i < calculateScreenCapacity(); i += 1) {
+    //                     ribbon.removeChild(ribbon.lastChild);
+    //                 }
+    //                 ribbon.classList.remove('ribbon_scroll');
+    //                 ribbon.scrollLeft += calculateScrollLength();
+    //             }
+    //             break;
+    //         }
+
+    //         resolve();
+    //     }, 700));
+    // }
 
     async function cleanup(cards) {
         return await new Promise(resolve => setTimeout(() => {
             for (const card of cards) {
                 card.remove();
             }
-            scroll(0, true);
 
             resolve();
-        }, 500));
+        }, 700));
     }
     
     function calculateScreenCapacity() {
@@ -102,27 +132,15 @@
     }
 
     function calculateScrollLength() {
-        const screenCapacity = calculateScreenCapacity();
-        if (screenCapacity === 1) {
-            return 270;
-        }
-        const ribbonWidth = ribbon.clientWidth;
-        const gapWidth = (ribbonWidth - 270 * screenCapacity) / (screenCapacity - 1);
-        return ribbon.clientWidth + gapWidth;
+        return document.querySelector('.courusel').clientWidth;
     }
 
     async function renderPets(pets, place) {
         const {renderedPets} = queryPets();
 
         const cardsToRemove = [...ribbon.children];
-        renderCards(pets, place);
-        scroll(place === 'beforeend' ? 0 : -calculateScrollLength(), true);
-        requestAnimationFrame(() => {
-            scroll(place === 'beforeend' ? -calculateScrollLength() : 0);
-        });
-        // setTimeout(() => {
-        //     scroll(place === 'beforeend' ? -calculateScrollLength() : 0);
-        // }, 0);
+        renderCards(place === 'beforeend' ? pets : pets.reverse(), place);
+        scroll(place);
         await cleanup(cardsToRemove);
 
         previousState = renderedPets;
@@ -133,11 +151,6 @@
     renderFirst();
 
     buttonRight.addEventListener('click', async function() {
-        if (skipClick) {
-            return;
-        }
-        skipClick = true;
-
         if (prevStep === 'left') {
             await renderPets(previousState, 'beforeend');
         } else {
@@ -146,16 +159,9 @@
             await renderPets(petsToRender, 'beforeend');
         }
         prevStep = 'right';
-
-        skipClick = false;
     });
 
     buttonLeft.addEventListener('click', async function() {
-        if (skipClick) {
-            return;
-        }
-        skipClick = true;
-
         if (prevStep === 'right') {
             await renderPets(previousState, 'afterbegin');
         } else {
@@ -164,7 +170,5 @@
             await renderPets(petsToRender, 'afterbegin');
         }
         prevStep = 'left';
-
-        skipClick = false;
     });
 })();

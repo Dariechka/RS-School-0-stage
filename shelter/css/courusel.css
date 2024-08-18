@@ -33,7 +33,8 @@
 }
 
 .ribbon_scroll {
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
+    transition: 0.5s ease-out;
 }
 
 .courusel_pets {
@@ -62,7 +63,7 @@
     justify-content: space-between;
     gap: 30px;
     cursor: pointer;
-    transition: 0.5s ease-out;
+    /* transition: 0.5s ease-out; */
 }
 
 .courusel__ribbon_item_img {
@@ -219,7 +220,7 @@
 
     .courusel__ribbon {
         width: 270px;
-        gap: 40px;
+        gap: 0px;
         order: -1;
     } 
 
