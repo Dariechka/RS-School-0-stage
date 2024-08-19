@@ -43,7 +43,7 @@
         }
     }
 
-    async function cleanup(cards) {
+    async function cleanup(cards, timeout) {
         return await new Promise(resolve => setTimeout(() => {
             for (const card of cards) {
                 card.remove();
@@ -51,7 +51,7 @@
             scroll(0, true);
 
             resolve();
-        }, 500));
+        }, timeout));
     }
     
     function calculateScreenCapacity() {
@@ -113,17 +113,17 @@
 
     async function renderPets(pets, place) {
         const {renderedPets} = queryPets();
-
+        const scrollLength = calculateScrollLength();
         const cardsToRemove = [...ribbon.children];
+
+        // render new cards
         renderCards(pets, place);
-        scroll(place === 'beforeend' ? 0 : -calculateScrollLength(), true);
-        requestAnimationFrame(() => {
-            scroll(place === 'beforeend' ? -calculateScrollLength() : 0);
-        });
-        // setTimeout(() => {
-        //     scroll(place === 'beforeend' ? -calculateScrollLength() : 0);
-        // }, 0);
-        await cleanup(cardsToRemove);
+        // after rendering, ensure displayed cards are the same by immediately scrolling to them if necessary to adjust
+        scroll(place === 'beforeend' ? 0 : -scrollLength, true);
+        // do animated scroll to newly rendered cards (inside setTimeout to ensure that previous adjusting scroll was applied)
+        setTimeout(() => scroll(place === 'beforeend' ? -scrollLength : 0), 0);
+        // cleanup originaly displayed cards after 500ms (since transition time is set to 500ms)
+        await cleanup(cardsToRemove, 500);
 
         previousState = renderedPets;
     }
