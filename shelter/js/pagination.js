@@ -77,6 +77,41 @@
         return forReturn;
     }
 
+    function checkButtons(step) {
+        if (step === 48){
+            buttonRightDouble.hidden = true;
+            buttonRightSingle.hidden = true;
+            buttonRightDoubleDisabled.hidden = false;
+            buttonRightSingleDisabled.hidden = false;
+    
+            buttonLeftDouble.hidden = false;
+            buttonLeftSingle.hidden = false;
+            buttonLeftDoubleDisabled.hidden = true;
+            buttonLeftSingleDisabled.hidden = true;
+    
+        } else if (step <= 8){
+            buttonLeftDouble.hidden = true;
+            buttonLeftSingle.hidden = true;
+            buttonLeftDoubleDisabled.hidden = false;
+            buttonLeftSingleDisabled.hidden = false;
+    
+            buttonRightDouble.hidden = false;
+            buttonRightSingle.hidden = false;
+            buttonRightDoubleDisabled.hidden = true;
+            buttonRightSingleDisabled.hidden = true;
+        } else {
+            buttonLeftDouble.hidden = false;
+            buttonLeftSingle.hidden = false;
+            buttonLeftDoubleDisabled.hidden = true;
+            buttonLeftSingleDisabled.hidden = true;
+    
+            buttonRightDouble.hidden = false;
+            buttonRightSingle.hidden = false;
+            buttonRightDoubleDisabled.hidden = true;
+            buttonRightSingleDisabled.hidden = true;
+        }
+    }
+
     function renderFirst(pets, place){
         number.innerHTML = '1';
         renderCards(pets, place);
@@ -85,8 +120,51 @@
     // executable
     const allShuffledPets = shufflePets(allPets);
     let step = 0;
+    checkButtons(step);
 
-    addEventListener('resize', renderFirst(allShuffledPets.slice(step, 8), 'afterbegin'));
+    addEventListener('resize', () => renderFirst(allShuffledPets.slice(step, calculateScreenCapacity()), 'afterbegin'));
     renderFirst(allShuffledPets.slice(step, 8), 'afterbegin');
+    step += calculateScreenCapacity();
+
+    buttonRightSingle.addEventListener('click', function(){
+        number.innerHTML =  +number.innerHTML + 1;
+        for (let i = 0; i < calculateScreenCapacity(); i+= 1) {
+            ribbon.removeChild(ribbon.firstChild);
+        }
+        renderCards(allShuffledPets.slice(step, step + calculateScreenCapacity()), 'afterbegin');
+        step += calculateScreenCapacity();
+        checkButtons(step);
+    })
+
+    buttonLeftSingle.addEventListener('click', function(){
+        number.innerHTML =  +number.innerHTML - 1;
+        for (let i = 0; i < calculateScreenCapacity(); i+= 1) {
+            ribbon.removeChild(ribbon.firstChild);
+        }
+        renderCards(allShuffledPets.slice(step - calculateScreenCapacity(), step), 'afterbegin');
+        step -= calculateScreenCapacity();
+        checkButtons(step);
+    })
+
+    buttonRightDouble.addEventListener('click', function(){
+        number.innerHTML = allShuffledPets.length/calculateScreenCapacity();
+        for (let i = 0; i < calculateScreenCapacity(); i+= 1) {
+            ribbon.removeChild(ribbon.firstChild);
+        }
+        renderCards(allShuffledPets.slice((allShuffledPets.length - 9), 48), 'afterbegin');
+        step = 48;
+        checkButtons(step);
+    })
+
+    buttonLeftDouble.addEventListener('click', function(){
+        number.innerHTML = '1';
+        for (let i = 0; i < calculateScreenCapacity(); i+= 1) {
+            ribbon.removeChild(ribbon.firstChild);
+        }
+        renderCards(allShuffledPets.slice(0, 8), 'afterbegin');
+        step = 8;
+        checkButtons(step);
+    })
+
 
 })();
