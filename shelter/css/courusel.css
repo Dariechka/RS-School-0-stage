@@ -16,11 +16,13 @@
     justify-content: center;
     cursor: pointer;
     transition: 0.5s ease-out;
+    fill: #292929;
 }
 
 .courusel__button_arrow[disabled] {
     border:  2px solid var(--color-dark-s);
     cursor: default;
+    fill: #CDCDCD;
 }
 
 .courusel__ribbon {
@@ -33,7 +35,6 @@
 }
 
 .ribbon_scroll {
-    /* scroll-behavior: smooth; */
     transition: 0.5s ease-out;
 }
 
