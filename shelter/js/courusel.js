@@ -23,12 +23,18 @@
                 `${place}`,
                 `<div class="courusel__ribbon_item">
                     <div class="courusel__ribbon_item_img">
-                       <img src="../pictures/${pet.name}.png" alt="${pet.name}" class="img"></img> 
+                       <img src="${pet.imgCard}" alt="${pet.name}" class="img"></img> 
                     </div>
                     <h3 class="courusel__ribbon_item_name">${pet.name}</h3>
                     <button class="button courusel__ribbon_item_button">Learn more</button>
                 </div>`
             );
+        }
+        const cards = [...ribbon.children];
+        for (let i = 0; i < cards.length; i++) {
+            const card = cards[i];
+            const pet = pets[i];
+            card.addEventListener('click', () => openModal(pet.name));
         }
     }
 

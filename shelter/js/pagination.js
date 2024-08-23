@@ -97,7 +97,7 @@
                 'beforeend',
                 `<div class="courusel__ribbon_item">
                     <div class="courusel__ribbon_item_img">
-                       <img src="${pet.img}" alt="${pet.name}" class="img"></img> 
+                       <img src="${pet.imgCard}" alt="${pet.name}" class="img"></img> 
                     </div>
                     <h3 class="courusel__ribbon_item_name">${pet.name}</h3>
                     <button class="button courusel__ribbon_item_button">Learn more</button>
