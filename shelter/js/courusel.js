@@ -1,3 +1,5 @@
+import openModal from './modal.js';
+
 (async () => {
     // state declarations
     const ribbon = document.querySelector('.courusel__ribbon');
@@ -18,23 +20,22 @@
     }
     
     function renderCards(pets, place) {
-        for (const pet of place === 'beforeend' ? pets : pets.reverse()) {
-            ribbon.insertAdjacentHTML(
-                `${place}`,
-                `<div class="courusel__ribbon_item">
+        const getCardId = (pet) => pet.name + '_card';
+        const cardsHtml = pets.map(pet =>
+            `<div id="${getCardId(pet)}" class="courusel__ribbon_item">
                     <div class="courusel__ribbon_item_img">
                        <img src="${pet.imgCard}" alt="${pet.name}" class="img"></img> 
                     </div>
                     <h3 class="courusel__ribbon_item_name">${pet.name}</h3>
                     <button class="button courusel__ribbon_item_button">Learn more</button>
                 </div>`
-            );
-        }
+        ).join('');
+        ribbon.insertAdjacentHTML(place, cardsHtml);
+
         const cards = [...ribbon.children];
-        for (let i = 0; i < cards.length; i++) {
-            const card = cards[i];
-            const pet = pets[i];
-            card.addEventListener('click', () => openModal(pet.name));
+        for (const pet of pets) {
+            const card = cards.find(card => card.id === getCardId(pet));
+            card.addEventListener('click', () => openModal(pet));
         }
     }
 

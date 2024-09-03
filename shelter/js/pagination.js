@@ -1,3 +1,5 @@
+import openModal from './modal.js';
+
 (async () => {
     const ribbon = document.querySelector('.courusel__ribbon_pets');
     const number = document.querySelector('.courusel__pages_number');
@@ -92,17 +94,23 @@
     function renderCards() {
         ribbon.innerHTML = '';
         const petsSlice = state.pets.slice(state.offset, state.offset + calculateScreenCapacity());
-        for (const pet of petsSlice) {
-            ribbon.insertAdjacentHTML(
-                'beforeend',
-                `<div class="courusel__ribbon_item">
+        const getCardId = (pet) => pet.name + '_card';
+
+        const cardsHtml = petsSlice.map(pet =>
+            `<div id="${getCardId(pet)}" class="courusel__ribbon_item">
                     <div class="courusel__ribbon_item_img">
                        <img src="${pet.imgCard}" alt="${pet.name}" class="img"></img> 
                     </div>
                     <h3 class="courusel__ribbon_item_name">${pet.name}</h3>
                     <button class="button courusel__ribbon_item_button">Learn more</button>
                 </div>`
-            );
+        ).join('');
+        ribbon.insertAdjacentHTML('beforeend', cardsHtml);
+
+        const cards = [...ribbon.children];
+        for (const pet of petsSlice) {
+            const card = cards.find(card => card.id === getCardId(pet));
+            card.addEventListener('click', () => openModal(pet));
         }
     }
 
