@@ -110,7 +110,10 @@ import openModal from './modal.js';
         const cards = [...ribbon.children];
         for (const pet of petsSlice) {
             const card = cards.find(card => card.id === getCardId(pet));
-            card.addEventListener('click', () => openModal(pet));
+            card.addEventListener('click', (event) => {
+                openModal(pet);
+                event.stopPropagation();
+            });
         }
     }
 

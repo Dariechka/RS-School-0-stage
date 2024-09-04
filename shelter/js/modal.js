@@ -31,12 +31,19 @@ export default function openModal(pet) {
             </div>
         </div>`
     );
-    const modal = document.querySelector('.modal__window');
 
+    const modal = document.querySelector('.modal__window');
     const closeButton = document.querySelector('.modal__close');
-    closeButton.addEventListener('click', function() {
-         modal.remove();
-         body.classList.remove('no-scroll');
-         background.style.display = 'none';
+
+    body.addEventListener('click', function closeModalListener(event) {
+        if (modal.contains(event.target) && !closeButton.contains(event.target)) {
+            return;
+        }
+        
+        modal.remove();
+        body.classList.remove('no-scroll');
+        background.style.display = 'none';
+
+        body.removeEventListener('click', closeModalListener);
     });
 }

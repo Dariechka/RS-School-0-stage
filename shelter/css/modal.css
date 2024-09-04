@@ -33,13 +33,14 @@
 }
 
 .modal__img {
-    width: 520px;
+    width: 500px;
     height: 500px;
+    overflow: hidden;
     border-radius: 9px;
 }
 
 .modal__text {
-    padding: 50px 22px 88px 0px;
+    padding: 50px 22px 70px 12px;
     font-family: "Georgia";
     font-style: normal;
     font-weight: 400;
