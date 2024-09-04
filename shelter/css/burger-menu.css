@@ -4,15 +4,18 @@
 
 @media screen and (max-width: 767px) and (min-width: 320px) {
     .background {
+        z-index: 100;
         display: none;
         width: 100%;
         height: 100%;
         position: fixed;
-        background-color: #C4C4C4;
-        opacity: 0.5; 
+        /*background-color: #C4C4C4;*/
+        background-color: rgba(41, 41, 41, 0.6);;
+        opacity: 60%;
     }
 
     .burger-menu {
+        z-index: 1000;
         display: block;
         width: 320px;
         height: 100vh;

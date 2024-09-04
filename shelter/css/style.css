@@ -10,6 +10,7 @@
 @import './inAddition.css';
 @import './footer.css';
 @import './burger-menu.css';
+@import './modal.css';
 
 :root {
     --color-light-s: #FAFAFA;

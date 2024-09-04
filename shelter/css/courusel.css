@@ -16,11 +16,13 @@
     justify-content: center;
     cursor: pointer;
     transition: 0.5s ease-out;
+    fill: #292929;
 }
 
 .courusel__button_arrow[disabled] {
     border:  2px solid var(--color-dark-s);
     cursor: default;
+    fill: #CDCDCD;
 }
 
 .courusel__ribbon {
@@ -30,8 +32,10 @@
     display: flex;
     justify-content: space-between;
     gap: 90px;
-    scroll-snap-type: x mandatory;
-    transition: all 0.3s ease-in-out;
+}
+
+.ribbon_scroll {
+    transition: 0.5s ease-out;
 }
 
 .courusel_pets {
@@ -44,7 +48,7 @@
     height: 930px;
     display: grid;
     grid-template-columns: repeat(4, 270px);
-    grid-template-rows: repeat(4, 435px);
+    grid-template-rows: repeat(2, 435px);
     column-gap: 40px;
     row-gap: 30px;
 }
@@ -60,7 +64,7 @@
     justify-content: space-between;
     gap: 30px;
     cursor: pointer;
-    transition: 0.5s ease-out;
+    /* transition: 0.5s ease-out; */
 }
 
 .courusel__ribbon_item_img {
@@ -217,7 +221,7 @@
 
     .courusel__ribbon {
         width: 270px;
-        gap: 40px;
+        gap: 0px;
         order: -1;
     } 
 
