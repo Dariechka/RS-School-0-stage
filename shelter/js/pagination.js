@@ -27,7 +27,7 @@ import openModal from './modal.js';
     }
 
     async function fetchPets() {
-        const response = await fetch('../pets.json');
+        const response = await fetch('./pets.json');
         return await response.json();
     }
 
