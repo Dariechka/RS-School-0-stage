@@ -9,6 +9,13 @@ html, body {
     box-sizing: border-box;
 }
 
+body {
+    background-image: url("./assets/img/numbBackground.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 main {
     height: 82vh;
 }
@@ -62,6 +69,12 @@ main {
     color: #F9F6EE;
 }
 
+.player__progress {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   grid-template-rows: 1vh 3vh;
+}
+
 input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
@@ -69,6 +82,8 @@ input[type="range"] {
     cursor: pointer;
     height: 0.5vh;
     width: 200pt;
+    grid-column: 1 / span 2;
+    grid-row: 1;
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -78,6 +93,27 @@ input[type="range"]::-webkit-slider-thumb {
     width: 1vw;
     height: 1vw; 
     border-radius: 50%;   
+ }
+
+ .currentTime {
+    font-family: "Lora", serif;
+    font-weight: 400;
+    font-style: normal;
+    align-self: end;
+    color: #E9DCC9;
+    grid-column: 1;
+    grid-row: 2;
+ }
+
+ .durationTime {
+    font-family: "Lora", serif;
+    font-weight: 400;
+    font-style: normal;
+    justify-self: end;
+    align-self: end;
+    color: #E9DCC9;
+    grid-column: 2;
+    grid-row: 2; 
  }
 
 .player__buttons {
