@@ -10,7 +10,7 @@ html, body {
 }
 
 body {
-    background-image: url("./assets/img/numbBackground.jpg");
+    /*background-image: url("./assets/img/numbBackground.jpg");*/
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

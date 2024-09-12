@@ -4,18 +4,21 @@ const songs = [
         band: 'Linkin Park',
         src: './assets/audio/Numb.mp3',
         cover: './assets/img/numb.jpg',
+        background: '../assets/img/numbBackground.jpg',
     },
     {
         name: 'Reality',
         band: 'Lost Frequencies',
         src: './assets/audio/Reality.mp3',
         cover: './assets/img/reality.jpg',
+        background: '../assets/img/realityBackground.jpg',
     },
     {
         name: 'Therapy',
         band: 'All Time Low',
         src: './assets/audio/Therapy.mp3',
         cover: './assets/img/therapy.jpg',
+        background: '../assets/img/therapyBackground.jpg',
     }, 
 ]
 
@@ -27,6 +30,9 @@ const currentTimeValue = document.querySelector('.currentTime');
 const durationTimeValue = document.querySelector('.durationTime');
 const nextButton = document.querySelector('.player__buttons_left');
 const previousButton = document.querySelector('.player__buttons_right');
+const songName = document.querySelector('.player__song');
+const singerName = document.querySelector('.player__singer');
+const imgSong = document.querySelector('.imgSong');
 let isPlay = false;
 let number = 0;
 
@@ -77,12 +83,32 @@ audio.addEventListener('timeupdate', () => {
     }
 });
 
+nextButton.addEventListener('click', function(){
+    number += 1;
+    makePlayList(number);
+})
 
-function makePlayList (numb) {
+previousButton.addEventListener('click', function(){
+    number -= 1;
+    makePlayList(number);
+})
+
+
+function makePlayList (number) {
     if (number === songs.length) {
         number = 0;
     }
 
+    audio.src = songs[number].src;
+    imgSong.src = songs[number].cover;
+    document.body.style.backgroundImage = `url(${songs[number].background})`;
+    songName.innerHTML = '';
+    singerName.innerHTML = '';
+    songName.innerHTML = songs[number].name;
+    singerName.innerHTML = songs[number].band;
+
+    playAudio();
+    number += 1;
 };
 
 makePlayList(number);
