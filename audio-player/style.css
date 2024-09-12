@@ -78,7 +78,7 @@ main {
 input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
-    background: rgb(32, 38, 57);
+    background: #202639;
     cursor: pointer;
     height: 0.5vh;
     width: 200pt;
@@ -93,7 +93,11 @@ input[type="range"]::-webkit-slider-thumb {
     width: 1vw;
     height: 1vw; 
     border-radius: 50%;   
- }
+}
+
+input[type="range"]:focus{
+    outline:none;
+  }
 
  .currentTime {
     font-family: "Lora", serif;
@@ -137,6 +141,9 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .pause {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     display: none;
 }
 

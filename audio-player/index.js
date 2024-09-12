@@ -19,4 +19,52 @@ const songs = [
     }, 
 ]
 
-const audio = document.querySelector("audio");
+const audio = document.querySelector('audio');
+const playButton = document.querySelector('.play');
+const pauseButton = document.querySelector('.pause');
+const progressBar = document.querySelector('.progress-bar');
+const currentTimeValue = document.querySelector('.currentTime');
+const durationTimeValue = document.querySelector('.durationTime');
+
+function playAudio() {
+    //audio.currentTime = 0;
+    audio.play();
+    playButton.style.display = 'none';
+    pauseButton.style.display = 'flex';
+
+  }
+function pauseAudio() {
+    audio.pause();
+    playButton.style.display = 'flex';
+    pauseButton.style.display = 'none';
+}
+
+function formateTime(time) {
+    let sec = Math.floor(time % 60).toString().padStart(2, '0');
+    let min = Math.floor(time / 60).toString().padStart(2, '0');
+    return `${min}:${sec}`
+}
+
+playButton.addEventListener('click', playAudio);
+pauseButton.addEventListener('click', pauseAudio);
+
+progressBar.addEventListener('input', (event) => {
+    const seekTime = (audio.duration / 100) * event.target.value;
+    audio.currentTime = seekTime;
+});
+  
+audio.addEventListener('timeupdate', () => {
+    const progress = (audio.currentTime / audio.duration) * 100;
+    progressBar.value = progress;
+
+   
+    currentTimeValue.innerHTML = formateTime(audio.currentTime);
+    durationTimeValue.innerHTML = formateTime(audio.duration);
+
+    let valPercent = progressBar.valueAsNumber / 100;
+    progressBar.style = 'background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop('+ valPercent+', #E9DCC9), color-stop('+ valPercent+', #202639));';
+
+    if (audio.currentTime == audio.duration){
+        pauseAudio();
+    }
+});
