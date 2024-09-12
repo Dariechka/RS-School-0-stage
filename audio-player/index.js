@@ -25,18 +25,23 @@ const pauseButton = document.querySelector('.pause');
 const progressBar = document.querySelector('.progress-bar');
 const currentTimeValue = document.querySelector('.currentTime');
 const durationTimeValue = document.querySelector('.durationTime');
+const nextButton = document.querySelector('.player__buttons_left');
+const previousButton = document.querySelector('.player__buttons_right');
+let isPlay = false;
+let number = 0;
 
 function playAudio() {
-    //audio.currentTime = 0;
-    audio.play();
-    playButton.style.display = 'none';
-    pauseButton.style.display = 'flex';
-
-  }
-function pauseAudio() {
-    audio.pause();
-    playButton.style.display = 'flex';
-    pauseButton.style.display = 'none';
+    if (!isPlay) {
+        audio.play();
+        playButton.style.display = 'none';
+        pauseButton.style.display = 'flex';
+        isPlay = true;
+    } else {
+        audio.pause();
+        playButton.style.display = 'flex';
+        pauseButton.style.display = 'none';
+        isPlay = false;
+    }
 }
 
 function formateTime(time) {
@@ -46,7 +51,7 @@ function formateTime(time) {
 }
 
 playButton.addEventListener('click', playAudio);
-pauseButton.addEventListener('click', pauseAudio);
+pauseButton.addEventListener('click', playAudio);
 
 progressBar.addEventListener('input', (event) => {
     const seekTime = (audio.duration / 100) * event.target.value;
@@ -57,6 +62,9 @@ audio.addEventListener('timeupdate', () => {
     const progress = (audio.currentTime / audio.duration) * 100;
     progressBar.value = progress;
 
+
+    currentTimeValue.innerHTML = '';
+    durationTimeValue.innerHTML = '';
    
     currentTimeValue.innerHTML = formateTime(audio.currentTime);
     durationTimeValue.innerHTML = formateTime(audio.duration);
@@ -65,6 +73,16 @@ audio.addEventListener('timeupdate', () => {
     progressBar.style = 'background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop('+ valPercent+', #E9DCC9), color-stop('+ valPercent+', #202639));';
 
     if (audio.currentTime == audio.duration){
-        pauseAudio();
+        playAudio();
     }
 });
+
+
+function makePlayList (numb) {
+    if (number === songs.length) {
+        number = 0;
+    }
+
+};
+
+makePlayList(number);
