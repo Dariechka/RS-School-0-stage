@@ -192,3 +192,14 @@ input[type="range"]:focus{
     font-size: 3vh;
     color: #1B1212;
 }
+
+@media screen and (max-width: 880px) and (min-width: 650px) {
+    .player {
+        width: 30vw;
+        height: 65vh;
+    }
+
+    input[type="range"] {
+        width: 27vw;
+    }
+}
