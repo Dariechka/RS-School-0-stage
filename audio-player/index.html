@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio-player</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <audio src="./assets/audio/Numb.mp3" preload="metadata"></audio>
+            <div class="player">
+                <div class="player__img">
+                    <img src="./assets/img/numb.jpg" alt="Numb" class="img imgSong">
+                </div>
+                <h2 class="player__song">Numb</h2>
+                <h3 class="player__singer">Linkin Park</h3>
+                <div class="player__progress">
+                    <input type="range" class="progress-bar" min="0" max="100" step="1" value="0">
+                    <div class="currentTime">00:00</div>
+                    <div class="durationTime">00:00</div>
+                </div>
+               <div class="player__buttons">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" class="player__buttons_right">
+                        <path d="M220-240v-480h80v480h-80Zm520 0L380-480l360-240v480Zm-80-240Zm0 90v-180l-136 90 136 90Z"/>
+                    </svg>
+                    <div class="player__buttons_arrow pause">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#5f6368">
+                            <path d="M520-200v-560h240v560H520Zm-320 0v-560h240v560H200Zm400-80h80v-400h-80v400Zm-320 0h80v-400h-80v400Zm0-400v400-400Zm320 0v400-400Z"/>
+                        </svg>
+                    </div>
+                    <div class="player__buttons_arrow play">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#5f6368">
+                            <path d="M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z"/>
+                        </svg>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" class="player__buttons_left">
+                        <path d="M660-240v-480h80v480h-80Zm-440 0v-480l360 240-360 240Zm80-240Zm0 90 136-90-136-90v180Z"/>
+                    </svg>
+               </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container container__footer">
+            <a href="https://github.com/Dariechka" rel="my-github" target="_blank" class="footer__img">
+                <img src="./assets/img/github.png" alt="github-logo" class="img">
+            </a>
+            <p class="footer__title">CREATED IN 2024</p>
+            <a href="https://rs.school/" rel="rs-school-logo" target="_blank" class="footer__img">
+                <img src="./assets/img/logo-rsschool3.png" alt="school-logo" class="img">
+            </a>
+        </div>
+    </footer>
+    <script src="./index.js"></script>
+</body>
