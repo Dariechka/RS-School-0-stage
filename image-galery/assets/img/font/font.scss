@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+// @font-face {
+//   font-family: "Adena";
+//   font-style: normal;
+//   src: local("Adena"), url('./../assets/img/font/AdenaDemo-Regular.ttf') format("ttf");
+// }
+
+@font-face {
+  font-family: "Adena";
+  font-style: normal;
+  src: local("Adena"),
+       url('./../assets/img/font/AdenaDemo-Regular.ttf') format('truetype'),
+       url('./../assets/img/font/AdenaDemo-Regular.woff') format('woff'),
+       url('./../assets/img/font/AdenaDemo-Regular.svg') format('svg'),
+       url('./../assets/img/font/AdenaDemo-Regular.eot') format('eot');
+}
