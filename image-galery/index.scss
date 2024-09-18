@@ -28,9 +28,10 @@ body {
 .search {
     width: 100%;
     position: sticky;
-    padding-top: 50px;
+    padding-top: 20px;
     display: flex;
     justify-content: space-around;
+    align-items: center;
     &__logo {
         display: flex;
         align-items: center;
@@ -42,10 +43,49 @@ body {
             font-family: "Adena";
             font-weight: 500;
             font-style: normal;
-            font-size: 7vh;
+            font-size: 6vh;
             color: #FFC0CB;
             -webkit-text-stroke: 2px black;
             margin: 0;
+        }
+    }
+    &__input {
+        &_input {
+            width: 35vw;
+            height: 5vh;
+            overflow: hidden;
+            border: none;
+            background-color: #DDE2E5;
+            border-radius: 20px;
+            position: relative;
+            padding-left: 50px;
+            z-index: 10;
+        }
+        &_input::placeholder {
+            color: #ACB5BD;
+            font-family: $text-font;
+            font-size: 2vh;  
+        }
+        &_input:focus {
+            outline: none;
+            background-color: #FFFFFF;
+        }
+        &_button {
+            background-color: transparent;
+            border: none;
+            position: absolute;
+            &_find {
+                left: 56.5%;
+                top: 49.5%;
+                z-index: 1000;
+                cursor: pointer;
+            }
+            &_clear {
+                left: 88%;
+                top: 49.5%;
+                z-index: 1000;
+                cursor: pointer;
+            }
         }
     }
 }
