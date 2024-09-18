@@ -26,6 +26,12 @@ body {
 .search {
     width: 100%;
     position: sticky;
+    top: 0;
+    left: 0;
+    background-image: url(".././assets/img/forSearch.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
     padding-top: 20px;
     display: flex;
     justify-content: space-around;
