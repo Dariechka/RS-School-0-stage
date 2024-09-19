@@ -14,31 +14,43 @@ input.addEventListener('keypress', async (event) => {
     const value = input.value;
     if (event.code !== 'Enter' || !value) return;
 
-    fetchPictures(value);
+    renderCards(value);
 });
 
 searchButton.addEventListener('click', async () => {
     const value = input.value;
     if (!value) return;
 
-    fetchPictures(value);
+    renderCards(value);
 });
 
-async function fetchPictures(query) {
-    const url = `https://api.unsplash.com/search/photos?query=${query}&client_id=9ACCQ9DMUfPamOT661GxHbzG1zEAj4yFmEQvoW2tdDw`;
+async function fetchPictures(query, size) {
+    const url = `https://api.unsplash.com/search/photos?query=${query}&per_page=${size}&client_id=9ACCQ9DMUfPamOT661GxHbzG1zEAj4yFmEQvoW2tdDw`;
     
     const response = await fetch(url);
-    const data = await response.json();
-    
-    console.log(data);
-    return data;
+    const json = await response.json();
+
+    return json.results;
 }
 
-function renderCards(data) {
+async function renderCards(query) {
+    const cards = queryCards();
+    const pictures = await fetchPictures(query, cards.length);
 
+    for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        const picture = pictures[i];
+        
+        card.querySelector('.results__img_img_picture').src = `${picture.urls.regular}`;
+        card.querySelector('.results__img_author_text').innerHTML = `${picture.user.name}`;
+    }
 }
 
-(async () => {
-    const pictures = await fetchPictures('default');
-    renderCards(pictures);
-})();
+function queryCards() {
+    const containers = Array.from(document.querySelectorAll('.results__container'));
+    return containers.flatMap(container => Array.from(container.children));
+}
+
+// (async () => {
+//     renderCards('value');
+// })();
