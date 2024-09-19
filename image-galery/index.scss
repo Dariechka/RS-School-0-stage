@@ -55,14 +55,16 @@ body {
     }
     &__input {
         &_input {
-            width: 35vw;
-            height: 5vh;
+            width: 550px;
+            height: 35px;
             overflow: hidden;
             border: none;
             background-color: #DDE2E5;
             border-radius: 20px;
             position: relative;
             padding-left: 50px;
+            font-size: 2vh;
+            font-family: $text-font;
             z-index: 10;
         }
         &_input::placeholder {
@@ -79,7 +81,7 @@ body {
             border: none;
             position: absolute;
             &_find {
-                left: 56.5%;
+                left: 55.2%;
                 top: 49.5%;
                 z-index: 1000;
                 cursor: pointer;
