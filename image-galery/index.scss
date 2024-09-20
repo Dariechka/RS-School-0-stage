@@ -14,13 +14,22 @@ html, body {
 body {
     background-image: url(".././assets/img/background.jpeg");
     background-size: cover;
-    background-repeat: no-repeat;
     background-position: top;
 }
 
 .img {
     height: 100%;
     width: 100%;
+}
+
+.erorr-text {
+    margin-top: 30px;
+    font-family: $text-font;
+    color: #d90429;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3.4vh;
+    display: none;
 }
 
 .search {

@@ -36,13 +36,35 @@ async function fetchPictures(query, size) {
 async function renderCards(query) {
     const cards = queryCards();
     const pictures = await fetchPictures(query, cards.length);
+    
+    document.querySelectorAll('.results__container').forEach(container => container.style.display = 'grid');
+    cards.forEach(card => card.style.display = 'grid');
+    document.querySelector('.results').style.height = '100%';
+    document.querySelector('.erorr-text').style.display = 'none';
 
-    for (let i = 0; i < cards.length; i++) {
+    if (!pictures || !pictures.length) {
+        document.querySelector('.erorr-text').style.display = 'block';
+        document.querySelectorAll('.results__container').forEach(container => container.style.display = 'none');
+        document.querySelector('.results').style.height = '65vh';
+        return;
+    }
+
+    for (let i = 0; i < pictures.length; i++) {
         const card = cards[i];
         const picture = pictures[i];
-        
-        card.querySelector('.results__img_img_picture').src = `${picture.urls.regular}`;
-        card.querySelector('.results__img_author_text').innerHTML = `${picture.user.name}`;
+            
+        card.querySelector('.results__img_img_picture').src = picture.urls.regular;
+        card.querySelector('.results__img_img_picture').alt = picture.description ? picture.description : query;
+        card.querySelector('.results__img_author_text').innerHTML = picture.user.name;
+    }
+
+    const renderNumber = pictures.length;
+    if (renderNumber < 14) {
+        document.querySelector('.results').style.height = '65vh';
+    }
+    const cardsForRemove = cards.slice(renderNumber);
+    for (const card of cardsForRemove){
+        card.style.display = 'none';
     }
 }
 
@@ -51,6 +73,6 @@ function queryCards() {
     return containers.flatMap(container => Array.from(container.children));
 }
 
-// (async () => {
-//     renderCards('value');
-// })();
+(async () => {
+    renderCards('Poland');
+})();
