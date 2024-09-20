@@ -1,6 +1,7 @@
 @import './assets/img/font/font.scss';
 
 $text-font: "Lora", serif;
+$medium: 1100px;
 
 html, body {
     height: 100vh;
@@ -51,6 +52,10 @@ body {
         &_img {
             width: 100px;
             height: 100px;
+            @media screen and (max-width: $medium) {
+                width: 80px;
+                height: 80px; 
+            }
         }
         &_text {
             font-family: "Adena";
@@ -60,9 +65,14 @@ body {
             color: #FFC0CB;
             -webkit-text-stroke: 2px black;
             margin: 0;
+            @media screen and (max-width: $medium) {
+                font-weight: 450;
+                font-size: 5vh;
+            }
         }
     }
     &__input {
+        position: relative;
         &_input {
             width: 550px;
             height: 35px;
@@ -70,16 +80,22 @@ body {
             border: none;
             background-color: #DDE2E5;
             border-radius: 20px;
-            position: relative;
             padding-left: 50px;
             font-size: 2vh;
             font-family: $text-font;
             z-index: 10;
+            @media screen and (max-width: $medium) {
+                width: 400px;
+                font-size: 1.5vh;
+            }
         }
         &_input::placeholder {
             color: #ACB5BD;
             font-family: $text-font;
-            font-size: 2vh;  
+            font-size: 2vh; 
+            @media screen and (max-width: $medium) {
+                font-size: 1.5vh;
+            } 
         }
         &_input:focus {
             outline: none;
@@ -90,8 +106,8 @@ body {
             border: none;
             position: absolute;
             &_find {
-                left: 55.5%;
-                top: 49.5%;
+                left: 1.8%;
+                top: 22%;
                 z-index: 1000;
                 cursor: pointer;
                 fill: #767676;
@@ -100,8 +116,8 @@ body {
                 fill: #1B1212;
             }
             &_clear {
-                left: 89%;
-                top: 49.5%;
+                left: 91%;
+                top: 22%;
                 z-index: 1000;
                 cursor: pointer;
                 fill: #767676;
@@ -190,6 +206,9 @@ body {
     overflow: hidden;
     margin: 0 auto;
     padding: 3vh 2vh;
+    @media screen and (max-width: $medium) {
+        padding: 2vh 1.5vh;
+    }
     &__container {
         display: flex;
         justify-content: space-between;
@@ -199,6 +218,9 @@ body {
     &__img {
         height: 100%;
         width: 16vh;
+        @media screen and (max-width: $medium) {
+            width: 10vh;
+        }
     }
 
     &__title {
@@ -207,5 +229,8 @@ body {
         font-style: normal;
         font-size: 3vh;
         color: #1B1212;
+        @media screen and (max-width: $medium) {
+            font-size: 2vh;
+        }
     }
 }
