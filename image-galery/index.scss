@@ -81,16 +81,24 @@ body {
             border: none;
             position: absolute;
             &_find {
-                left: 55.2%;
+                left: 55.5%;
                 top: 49.5%;
                 z-index: 1000;
                 cursor: pointer;
+                fill: #767676;
+            }
+            &_find:hover {
+                fill: #1B1212;
             }
             &_clear {
-                left: 88%;
+                left: 89%;
                 top: 49.5%;
                 z-index: 1000;
                 cursor: pointer;
+                fill: #767676;
+            }
+            &_clear:hover {
+                fill: #1B1212;
             }
         }
     }
@@ -105,8 +113,8 @@ body {
         margin-top: 2vh;
         display: grid;
         row-gap: 2vh;
-        column-gap: 5%;
-        grid-template-columns: 30% 30% 30%;
+        column-gap: 2%;
+        grid-template-columns: 32% 32% 32%;
         grid-template-rows: 40vh 20vh 10vh 40vh;
     }
     &__img_one {
