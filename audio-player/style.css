@@ -193,7 +193,7 @@ input[type="range"]:focus{
     color: #1B1212;
 }
 
-@media screen and (max-width: 880px) and (min-width: 650px) {
+@media screen and (max-width: 990px) and (min-width: 650px) {
     .player {
         width: 30vw;
         height: 65vh;
