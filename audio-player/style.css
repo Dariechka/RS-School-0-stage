@@ -17,7 +17,7 @@ body {
 }
 
 main {
-    height: 82vh;
+    height: 80vh;
 }
 
 .container {
@@ -28,11 +28,11 @@ main {
 
 .player {
     position: fixed;
-    top: 40%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%,-50%);
     width: 17vw;
-    height: 580px;
+    height: 550px;
     background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
     border-radius: 7%;
     display: flex;
@@ -81,7 +81,7 @@ input[type="range"] {
     background: #202639;
     cursor: pointer;
     height: 0.5vh;
-    width: 16vw;
+    width: 15vw;
     grid-column: 1 / span 2;
     grid-row: 1;
 }
@@ -240,6 +240,11 @@ input[type="range"]:focus{
     .footer__title {
         font-size: 2vh;
     }
+
+    .player__buttons_arrow {
+        width: 3.8vw;
+        height: 3.8vw;
+    }
 }
 
 @media screen and (max-width: 901px) and (min-width: 851px) {
@@ -257,6 +262,11 @@ input[type="range"]:focus{
 
     .footer__title {
         font-size: 2vh;
+    }
+
+    .player__buttons_arrow {
+        width: 4vw;
+        height: 4vw;
     }
 }
 
@@ -276,9 +286,22 @@ input[type="range"]:focus{
     .footer__title {
         font-size: 1.5vh;
     }
+
+    .player__buttons_arrow {
+        width: 4vw;
+        height: 4vw;
+    }
 }
 
 @media screen and (max-width: 800px) and (min-width: 700px) {
+    main {
+        height: 85vh;
+    }
+
+    .player {
+        top: 38%;
+    }
+
     .player {
         width: 42vw;
     }
@@ -288,28 +311,56 @@ input[type="range"]:focus{
     }
 
     .footer__img {
-        width: 12vh;
+        width: 10vh;
     }
 
     .footer__title {
         font-size: 1.5vh;
     }
+
+    .player__buttons_arrow {
+        width: 5vw;
+        height: 5vw;
+    }
 }
 
 @media screen and (max-width: 699px) and (min-width: 320px) {
+    main {
+        height: 85vh;
+    }
+
     .player {
-        width: 50vw;
+        top: 38%;
+    }
+
+    .player {
+        width: 300px;
+    }
+
+    .img {
+        height: 100%;
+        width: 100%;
     }
 
     input[type="range"] {
-        width: 47vw;
+        width: 280px;
     }
 
     .footer__img {
-        width: 10vh;
+        width: 8vh;
     }
 
     .footer__title {
-        font-size: 1vh;
+        font-size: 1.5vh;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+        width: 3vw;
+        height: 3vw; 
+    }
+
+    .player__buttons_arrow {
+        width: 9vw;
+        height: 9vw;
     }
 }
