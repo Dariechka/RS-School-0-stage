@@ -222,6 +222,11 @@ input[type="range"]:focus{
     input[type="range"] {
         width: 26vw;
     }
+
+    input[type="range"]::-webkit-slider-thumb {
+        width: 1.5vw;
+        height: 1.5vw; 
+    }
 }
 
 @media screen and (max-width: 1091px) and (min-width: 901px) {
@@ -244,6 +249,11 @@ input[type="range"]:focus{
     .player__buttons_arrow {
         width: 3.8vw;
         height: 3.8vw;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+        width: 1.5vw;
+        height: 1.5vw; 
     }
 }
 
@@ -268,6 +278,11 @@ input[type="range"]:focus{
         width: 4vw;
         height: 4vw;
     }
+
+    input[type="range"]::-webkit-slider-thumb {
+        width: 1.5vw;
+        height: 1.5vw; 
+    }
 }
 
 @media screen and (max-width: 850px) and (min-width: 801px) {
@@ -290,6 +305,11 @@ input[type="range"]:focus{
     .player__buttons_arrow {
         width: 4vw;
         height: 4vw;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+        width: 2vw;
+        height: 2vw; 
     }
 }
 
@@ -321,6 +341,11 @@ input[type="range"]:focus{
     .player__buttons_arrow {
         width: 5vw;
         height: 5vw;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+        width: 2vw;
+        height: 2vw; 
     }
 }
 
@@ -355,8 +380,8 @@ input[type="range"]:focus{
     }
 
     input[type="range"]::-webkit-slider-thumb {
-        width: 3vw;
-        height: 3vw; 
+        width: 10px;
+        height: 10px; 
     }
 
     .player__buttons_arrow {
