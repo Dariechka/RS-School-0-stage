@@ -18,9 +18,90 @@ body {
     background-position: top;
 }
 
+main {
+    height: 80vh;
+}
+
 .img {
     height: 100%;
     width: 100%;
+    object-fit: cover;
+}
+
+.game {
+    max-width: 1300px;
+    overflow: hidden;
+    margin: 0 auto;
+    &__title {
+        font-family: $text-font;
+        font-weight: 400;
+        font-style: italic;
+        font-size: 4vh;
+        color: #1B1212;
+        text-align: center;
+        margin-bottom: 0px;
+        margin-top: 50px;
+    }
+    &__wraper {
+        max-width: 900px;
+        max-height: 450px;
+        position: fixed;
+        top: 45%;
+        left: 50%;
+        transform: translate(-75%,-50%);
+        display: flex;
+        gap: 50px;
+    }
+    &__field {
+        max-width: 450px;
+        max-height: 450px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(146px,1fr));
+        grid-template-rows: repeat(3, minmax(146px,1fr));
+        border: 3px solid #1B1212;
+        grid-gap: 3px;
+        background-color: #1B1212;
+        &_miniGrid {
+            background-color: #FFFFFF;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(47.33px,1fr));
+            grid-template-rows: repeat(3, minmax(47.33px,1fr));
+            &_cell {
+                border-bottom: 1px solid #E5E4E2;
+                border-right: 1px solid #E5E4E2;
+                border-top: 1px solid #E5E4E2;
+                border-left: 1px solid #E5E4E2;
+            }
+            &_cell:first-child {
+                border-top: 1px solid transparent;
+                border-left: 1px solid transparent;
+            }
+            &_cell:last-child {
+                border-bottom: 1px solid transparent;
+                border-right: 1px solid transparent;
+            }
+            &_cell:nth-child(2) {
+                border-top: 1px solid transparent;
+            }
+            &_cell:nth-child(3) {
+                border-top: 1px solid transparent;
+                border-right: 1px solid transparent;
+            }
+            &_cell:nth-child(4) {
+                border-left: 1px solid transparent;
+            }
+            &_cell:nth-child(6) {
+                border-right: 1px solid transparent;
+            }
+            &_cell:nth-child(7) {
+                border-left: 1px solid transparent;
+                border-bottom: 1px solid transparent;
+            }
+            &_cell:nth-child(8) {
+                border-bottom: 1px solid transparent;
+            }
+        }
+    }
 }
 
 .footer {
@@ -36,23 +117,15 @@ body {
         justify-content: space-between;
         align-items: center;
     }
-
     &__img {
         height: 100%;
         width: 16vh;
-        @media screen and (max-width: $medium) {
-            width: 10vh;
-        }
     }
-
     &__title {
         font-family: $text-font;
         font-weight: 400;
         font-style: normal;
         font-size: 3vh;
         color: #1B1212;
-        @media screen and (max-width: $medium) {
-            font-size: 2vh;
-        }
     }
 }
