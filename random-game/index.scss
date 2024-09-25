@@ -1,7 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 
 $text-font: "Lora", serif;
+$black: #1B1212;
+$white: #FFFFFF;
+$gray: #E5E4E2;
+$lightgray: #E9EAEC;
+$blue: #3187A2;
+$lightblue: #DEEFF5;
+$hover-lightblue: #7CC1D7;
 $medium: 1100px;
+
+@mixin text() {
+    font-family: $text-font;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3vh;
+    color: $black;
+}
 
 html, body {
     height: 100vh;
@@ -19,7 +34,7 @@ body {
 }
 
 main {
-    height: 80vh;
+    height: 77vh;
 }
 
 .img {
@@ -33,11 +48,9 @@ main {
     overflow: hidden;
     margin: 0 auto;
     &__title {
-        font-family: $text-font;
-        font-weight: 400;
+        @include text();
         font-style: italic;
         font-size: 4vh;
-        color: #1B1212;
         text-align: center;
         margin-bottom: 0px;
         margin-top: 50px;
@@ -59,25 +72,25 @@ main {
         display: grid;
         grid-template-columns: repeat(3, minmax(146px,1fr));
         grid-template-rows: repeat(3, minmax(146px,1fr));
-        border: 3px solid #1B1212;
+        border: 3px solid $black;
         grid-gap: 3px;
-        background-color: #1B1212;
+        background-color: $black;
         &_miniGrid {
-            background-color: #FFFFFF;
+            background-color: $white;
             display: grid;
             grid-template-columns: repeat(3, minmax(47.33px,1fr));
             grid-template-rows: repeat(3, minmax(47.33px,1fr));
             &_cell {
-                border-bottom: 1px solid #E5E4E2;
-                border-right: 1px solid #E5E4E2;
-                border-top: 1px solid #E5E4E2;
-                border-left: 1px solid #E5E4E2;
+                border-bottom: 1px solid $gray;
+                border-right: 1px solid $gray;
+                border-top: 1px solid $gray;
+                border-left: 1px solid $gray;
             }
             &_cell:active {
-                background-color: #DEEFF5;
+                background-color: $lightblue;
             }
             &_cell[checked="checked"] {
-                background-color: #DEEFF5;
+                background-color: $lightblue;
             }
             &_cell:first-child {
                 border-top: 1px solid transparent;
@@ -120,11 +133,26 @@ main {
             max-width: 300px;
             max-height: 300px;
             display: grid;
-            grid-template-columns: repeat(3, minmax(97.33px,1fr));
-            grid-template-rows: repeat(3, minmax(97.33px,1fr));
-            border: 2px solid #FFFFFF;
-            grid-gap: 2px;
-            background-color: #FFFFFF;
+            grid-template-columns: repeat(3, minmax(85px,1fr));
+            grid-template-rows: repeat(3, minmax(85px,1fr));
+            border: 4px solid $white;
+            grid-gap: 4px;
+            background-color: $white;
+            &_num {
+                background-color: $lightgray;
+                @include text();
+                color: $blue;
+                font-size: 4vh;
+                border-radius: 8px;
+                border: none;
+                &:hover {
+                    background-color: $gray; 
+                }
+                &:active {
+                    background-color: $gray; 
+                    box-shadow: 0 2px 7px $black;
+                }
+            }
         }
         &_newGame {
             width: 300px;
@@ -132,15 +160,23 @@ main {
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: $text-font;
-            font-weight: 400;
-            font-style: normal;
-            font-size: 3vh;
-            color: #FFFFFF;
-            background-color: #3187A2;
+            @include text();
+            color: $white;
+            background-color: $blue;
             border: none;
             border-radius: 8px;
+            position: relative;
+            transition: all .2s ease-in-out;
+            &:hover {
+                background-color: $hover-lightblue;
+            }
+            &:active {
+                background-color: $hover-lightblue;
+                transform: translateY(2px);
+                box-shadow: 0 5px 10px $black;
+            }
         }
+        
     }
 }
 
@@ -162,10 +198,6 @@ main {
         width: 16vh;
     }
     &__title {
-        font-family: $text-font;
-        font-weight: 400;
-        font-style: normal;
-        font-size: 3vh;
-        color: #1B1212;
+        @include text();
     }
 }
