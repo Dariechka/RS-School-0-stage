@@ -80,17 +80,31 @@ main {
             display: grid;
             grid-template-columns: repeat(3, minmax(47.33px,1fr));
             grid-template-rows: repeat(3, minmax(47.33px,1fr));
+            transition: all 0.3s linear;
+            &[hover="hover"] {
+                background-color: $lightgray;
+            }
             &_cell {
                 border-bottom: 1px solid $gray;
                 border-right: 1px solid $gray;
                 border-top: 1px solid $gray;
                 border-left: 1px solid $gray;
-            }
-            &_cell:active {
-                background-color: $lightblue;
-            }
-            &_cell[checked="checked"] {
-                background-color: $lightblue;
+                @include text();
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &:active {
+                    background-color: $lightblue;
+                }
+                &[hover="hover"] {
+                    background-color: $lightgray;
+                }
+                &[checked="checked"] {
+                    background-color: $lightblue;
+                }
+                &_active {
+                    background-color: $lightblue;
+                }
             }
             &_cell:first-child {
                 border-top: 1px solid transparent;
