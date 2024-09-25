@@ -126,15 +126,54 @@ main {
         max-width: 300px;
         max-height: 450px;
         display: flex;
-        gap: 20px;
         flex-flow: column wrap;
         align-content: space-between;
+        justify-content: space-between;
+        &_top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            &_mistakes {
+                @include text();
+                font-size: 2.5vh;
+                &_number {
+                    @include text();
+                    font-size: 2.5vh;
+                }
+            }
+            &_time {
+                @include text();
+            }
+            &_clean {
+                background-color: $lightgray;
+                @include text();
+                color: $blue;
+                font-size: 2vh;
+                border-radius: 8px;
+                border: none;
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                &:hover {
+                    background-color: $gray; 
+                }
+                &:active {
+                    background-color: $gray; 
+                    box-shadow: 0 2px 7px $black;
+                }
+                &_icon {
+                    fill: $blue;
+                }
+            }
+        }
         &_numbers {
             max-width: 300px;
             max-height: 300px;
             display: grid;
-            grid-template-columns: repeat(3, minmax(85px,1fr));
-            grid-template-rows: repeat(3, minmax(85px,1fr));
+            grid-template-columns: repeat(3, minmax(90px,1fr));
+            grid-template-rows: repeat(3, minmax(90px,1fr));
             border: 4px solid $white;
             grid-gap: 4px;
             background-color: $white;
@@ -145,6 +184,7 @@ main {
                 font-size: 4vh;
                 border-radius: 8px;
                 border: none;
+                cursor: pointer;
                 &:hover {
                     background-color: $gray; 
                 }
@@ -167,6 +207,7 @@ main {
             border-radius: 8px;
             position: relative;
             transition: all .2s ease-in-out;
+            cursor: pointer;
             &:hover {
                 background-color: $hover-lightblue;
             }

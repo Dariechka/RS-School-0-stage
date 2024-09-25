@@ -112,16 +112,71 @@ main {
   max-width: 300px;
   max-height: 450px;
   display: flex;
-  gap: 20px;
   flex-flow: column wrap;
   align-content: space-between;
+  justify-content: space-between;
+}
+.game__controlls_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.game__controlls_top_mistakes {
+  font-family: "Lora", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: #1B1212;
+  font-size: 2.5vh;
+}
+.game__controlls_top_mistakes_number {
+  font-family: "Lora", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: #1B1212;
+  font-size: 2.5vh;
+}
+.game__controlls_top_time {
+  font-family: "Lora", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: #1B1212;
+}
+.game__controlls_top_clean {
+  background-color: #E9EAEC;
+  font-family: "Lora", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: #1B1212;
+  color: #3187A2;
+  font-size: 2vh;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.game__controlls_top_clean:hover {
+  background-color: #E5E4E2;
+}
+.game__controlls_top_clean:active {
+  background-color: #E5E4E2;
+  box-shadow: 0 2px 7px #1B1212;
+}
+.game__controlls_top_clean_icon {
+  fill: #3187A2;
 }
 .game__controlls_numbers {
   max-width: 300px;
   max-height: 300px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(85px, 1fr));
-  grid-template-rows: repeat(3, minmax(85px, 1fr));
+  grid-template-columns: repeat(3, minmax(90px, 1fr));
+  grid-template-rows: repeat(3, minmax(90px, 1fr));
   border: 4px solid #FFFFFF;
   grid-gap: 4px;
   background-color: #FFFFFF;
@@ -137,6 +192,7 @@ main {
   font-size: 4vh;
   border-radius: 8px;
   border: none;
+  cursor: pointer;
 }
 .game__controlls_numbers_num:hover {
   background-color: #E5E4E2;
@@ -162,6 +218,7 @@ main {
   border-radius: 8px;
   position: relative;
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
 .game__controlls_newGame:hover {
   background-color: #7CC1D7;
