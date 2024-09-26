@@ -102,9 +102,9 @@ main {
                 &[checked="checked"] {
                     background-color: $lightblue;
                 }
-                &_active {
+                /*&_active {
                     background-color: $lightblue;
-                }
+                }*/
             }
             &_cell:first-child {
                 border-top: 1px solid transparent;
@@ -254,5 +254,25 @@ main {
     }
     &__title {
         @include text();
+    }
+}
+
+.active {
+    background-color: $lightblue;
+}
+
+.hide {
+    background-color: $white;
+    color: $white;
+    font-size: 4vh;
+    border-radius: 8px;
+    border: none;
+    cursor: auto;
+    &:hover {
+        background-color: $white;
+    }
+    &:active {
+        background-color: $white; 
+        box-shadow: none;
     }
 }

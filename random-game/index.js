@@ -14,6 +14,7 @@ function chooseCells(cell) {
         cell.closest('.game__field_miniGrid').setAttribute('hover', 'hover');
         findRowsforHover(cell);
         highlightDigits(cell);
+        
     } else {
         clearHoverCells();
         document.querySelector('.game__field_miniGrid[hover="hover"]').removeAttribute('hover', 'hover');
@@ -61,8 +62,12 @@ function findRowsforHover(cell){
 
 function highlightDigits(cell) {
     const digit = cell.innerHTML;
-    cells.forEach(cell => cell.removeAttribute('checked'));
+    cells.forEach(cell => {
+        cell.removeAttribute('checked');
+        cell.classList.remove('active');
+    })
     cell.setAttribute('checked', 'checked');
+    cell.classList.add('active');
     if (digit === '') return;
 
     cells.forEach(cell => (cell.innerHTML === digit) ? cell.setAttribute('checked', 'checked') : cell);
@@ -75,4 +80,63 @@ digitButtons.map(digitButton => digitButton.addEventListener('click', () => {
     checkedCell.innerHTML = digit;
     checkedCell.style.color = '#3187A2';
     highlightDigits(checkedCell);
+
+    if (document.querySelectorAll('.game__field_miniGrid_cell[checked="checked"]').length === 9) {
+        digitButton.classList.add('hide');
+    }
 }));
+
+cleanButton.addEventListener('click', () => {
+    const activeCell = document.querySelector('.active');
+    if (activeCell.style.color !== 'rgb(49, 135, 162)') return;
+    activeCell.innerHTML = '';
+
+    checkNineCaseofDigit();
+});
+
+function checkNineCaseofDigit() {
+    let counter = [1, 1, 1, 1, 1, 1, 1, 1, 1];
+
+    cells.forEach(cell => {
+        const number = +cell.innerHTML;
+        switch (number) {
+            case 1:
+                counter[0] +=1;
+              break;
+            case 2:
+                counter[1] += 1;
+              break;
+            case 3:
+                counter[2] += 1;
+              break;
+            case 4:
+                counter[3] += 1;
+              break;
+            case 5:
+                counter[4] += 1;
+              break;
+            case 6:
+                counter[5] += 1;
+              break;
+            case 7:
+                counter[6] += 1;
+              break;
+            case 8:
+                counter[7] += 1;
+              break;
+            case 9:
+                counter[8] += 1;
+              break;
+          }
+    });
+
+    counter.forEach((number, index) => {
+        if (number === 9){
+            Array.from(document.querySelectorAll('.game__controlls_numbers_num')).map(button => {
+                if (+button.innerHTML === index + 1){
+                    button.classList.remove('hide');
+                }
+            })
+        }
+    })
+}

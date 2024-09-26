@@ -85,6 +85,9 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  /*&_active {
+      background-color: $lightblue;
+  }*/
 }
 .game__field_miniGrid_cell:active {
   background-color: #DEEFF5;
@@ -93,9 +96,6 @@ main {
   background-color: #ededed;
 }
 .game__field_miniGrid_cell[checked=checked] {
-  background-color: #DEEFF5;
-}
-.game__field_miniGrid_cell_active {
   background-color: #DEEFF5;
 }
 .game__field_miniGrid_cell:first-child {
@@ -273,6 +273,26 @@ main {
   font-style: normal;
   font-size: 3vh;
   color: #1B1212;
+}
+
+.active {
+  background-color: #DEEFF5;
+}
+
+.hide {
+  background-color: #FFFFFF;
+  color: #FFFFFF;
+  font-size: 4vh;
+  border-radius: 8px;
+  border: none;
+  cursor: auto;
+}
+.hide:hover {
+  background-color: #FFFFFF;
+}
+.hide:active {
+  background-color: #FFFFFF;
+  box-shadow: none;
 }
 
 /*# sourceMappingURL=style.css.map */
