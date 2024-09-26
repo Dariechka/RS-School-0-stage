@@ -1,10 +1,15 @@
 const cells = Array.from(document.querySelectorAll('.game__field_miniGrid_cell'));
+const digitButtons = Array.from(document.querySelectorAll('.game__controlls_numbers_num'));
+const cleanButton = document.querySelector('.game__controlls_top_clean');
+const newGameButton = document.querySelector('.game__controlls_newGame');
+const mistaksNumber = document.querySelector('.game__controlls_top_mistakes_number');
+const timer = document.querySelector('.game__controlls_top_time');
 
 cells.map(cell => {
-    cell.addEventListener('click',() => makeCellsHover(cell));
+    cell.addEventListener('click',() => chooseCells(cell));
 });
 
-function makeCellsHover(cell) {
+function chooseCells(cell) {
     if (!document.querySelector('.game__field_miniGrid[hover="hover"]')){
         cell.closest('.game__field_miniGrid').setAttribute('hover', 'hover');
         findRowsforHover(cell);
@@ -56,8 +61,18 @@ function findRowsforHover(cell){
 
 function highlightDigits(cell) {
     const digit = cell.innerHTML;
-    cells.forEach(cell => cell.style.color = '#1B1212');
+    cells.forEach(cell => cell.removeAttribute('checked'));
+    cell.setAttribute('checked', 'checked');
     if (digit === '') return;
 
-    cells.forEach(cell => (cell.innerHTML === digit) ? cell.style.color = '#4169E1' : cell);
+    cells.forEach(cell => (cell.innerHTML === digit) ? cell.setAttribute('checked', 'checked') : cell);
 }
+
+digitButtons.map(digitButton => digitButton.addEventListener('click', () => {
+    if (document.querySelectorAll('.game__field_miniGrid_cell[checked="checked"]').length > 1) return;
+    const digit = digitButton.innerHTML;
+    const checkedCell = document.querySelector('.game__field_miniGrid_cell[checked="checked"]');
+    checkedCell.innerHTML = digit;
+    checkedCell.style.color = '#3187A2';
+    highlightDigits(checkedCell);
+}));
