@@ -8,12 +8,18 @@ function makeCellsHover(cell) {
     if (!document.querySelector('.game__field_miniGrid[hover="hover"]')){
         cell.closest('.game__field_miniGrid').setAttribute('hover', 'hover');
         findRowsforHover(cell);
+        highlightDigits(cell);
     } else {
         clearHoverCells();
         document.querySelector('.game__field_miniGrid[hover="hover"]').removeAttribute('hover', 'hover');
         cell.closest('.game__field_miniGrid').setAttribute('hover', 'hover');
         findRowsforHover(cell);
+        highlightDigits(cell);
     }
+}
+
+function clearHoverCells() {
+    Array.from(document.querySelectorAll('.game__field_miniGrid_cell[hover="hover"]')).forEach(cell => cell.removeAttribute('hover'));
 }
 
 function findRowsforHover(cell){
@@ -48,6 +54,10 @@ function findRowsforHover(cell){
     }) 
 }
 
-function clearHoverCells() {
-    Array.from(document.querySelectorAll('.game__field_miniGrid_cell[hover="hover"]')).forEach(cell => cell.removeAttribute('hover'));
+function highlightDigits(cell) {
+    const digit = cell.innerHTML;
+    cells.forEach(cell => cell.style.color = '#1B1212');
+    if (digit === '') return;
+
+    cells.forEach(cell => (cell.innerHTML === digit) ? cell.style.color = '#4169E1' : cell);
 }

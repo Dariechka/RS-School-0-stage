@@ -70,7 +70,7 @@ main {
   transition: all 0.3s linear;
 }
 .game__field_miniGrid[hover=hover] {
-  background-color: #E9EAEC;
+  background-color: #ededed;
 }
 .game__field_miniGrid_cell {
   border-bottom: 1px solid #E5E4E2;
@@ -90,7 +90,7 @@ main {
   background-color: #DEEFF5;
 }
 .game__field_miniGrid_cell[hover=hover] {
-  background-color: #E9EAEC;
+  background-color: #ededed;
 }
 .game__field_miniGrid_cell[checked=checked] {
   background-color: #DEEFF5;
@@ -163,7 +163,7 @@ main {
   color: #1B1212;
 }
 .game__controlls_top_clean {
-  background-color: #E9EAEC;
+  background-color: #ededed;
   font-family: "Lora", serif;
   font-weight: 400;
   font-style: normal;
@@ -200,7 +200,7 @@ main {
   background-color: #FFFFFF;
 }
 .game__controlls_numbers_num {
-  background-color: #E9EAEC;
+  background-color: #ededed;
   font-family: "Lora", serif;
   font-weight: 400;
   font-style: normal;
