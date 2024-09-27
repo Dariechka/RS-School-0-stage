@@ -74,12 +74,11 @@ function queryCards() {
     return containers.flatMap(container => Array.from(container.children));
 }
 
-imgs.forEach(img => img.addEventListener('click', () => {
-    //event.stopPropagation();
-    openModal(img.src, img.alt);
+imgs.forEach((img, index) => img.addEventListener('click', () => {
+    openModal(img.src, img.alt, index);
 }));
 
-function openModal(src, description) {
+function openModal(src, description, index) {
     const body = document.body;
     const background = document.querySelector('.background');
     body.classList.add('no-scroll');
@@ -90,7 +89,7 @@ function openModal(src, description) {
         `afterbegin`,
     `<div class="modal">
         <div class="modal__img">
-            <img src="${src}" alt="${description}" class="img">
+            <img src="${src}" alt="${description}" class="img img_modal">
         </div>
         <div class="modal__description">${description}</div>
     </div>
@@ -164,6 +163,34 @@ function openModal(src, description) {
         background.style.display = 'none';
 
         body.removeEventListener('click', closeModalListener);
+    });
+
+    const previous = buttonsArrow[0];
+    const next = buttonsArrow[1];
+
+    next.addEventListener('click', () => {
+        previous.style.display = 'block';
+        document.querySelector('.img_modal').src = imgs[index + 1].src;
+        document.querySelector('.img_modal').alt = imgs[index + 1].alt;
+        document.querySelector('.modal__description').innerHTML = imgs[index + 1].alt;
+
+        index = index + 1;
+
+        if (index === 13){
+            next.style.display = 'none';
+        }  
+    });
+    previous.addEventListener('click', () => {
+        next.style.display = 'block';
+        document.querySelector('.img_modal').src = imgs[index - 1].src;
+        document.querySelector('.img_modal').alt = imgs[index - 1].alt;
+        document.querySelector('.modal__description').innerHTML = imgs[index - 1].alt;
+
+        index = index - 1;
+
+        if (index === 0){
+            previous.style.display = 'none';
+        }  
     });
 }
 
