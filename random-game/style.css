@@ -295,4 +295,8 @@ main {
   box-shadow: none;
 }
 
+.error {
+  background-color: #FAA0A0;
+}
+
 /*# sourceMappingURL=style.css.map */

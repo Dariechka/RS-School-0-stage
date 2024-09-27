@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 
 $text-font: "Lora", serif;
+$red: #FAA0A0;
 $black: #1B1212;
 $white: #FFFFFF;
 $gray: #E5E4E2;
@@ -275,4 +276,8 @@ main {
         background-color: $white; 
         box-shadow: none;
     }
+}
+
+.error {
+    background-color: $red;
 }
