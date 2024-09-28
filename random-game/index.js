@@ -79,10 +79,11 @@ digitButtons.map(digitButton => digitButton.addEventListener('click', () => {
     const checkedCell = document.querySelector('.game__field_miniGrid_cell[checked="checked"]');
     checkedCell.innerHTML = digit;
     checkedCell.style.color = '#3187A2';
+    checkNineCaseofDigit();
     highlightDigits(checkedCell);
     checkMistakes(checkedCell);
 
-    if (document.querySelectorAll('.game__field_miniGrid_cell[checked="checked"]').length === 9) {
+    if (document.querySelectorAll('.game__field_miniGrid_cell[checked="checked"]').length === 8) {
         digitButton.classList.add('hide');
     }
 }));
@@ -97,7 +98,7 @@ cleanButton.addEventListener('click', () => {
 });
 
 function checkNineCaseofDigit() {
-    let counter = [1, 1, 1, 1, 1, 1, 1, 1, 1];
+    let counter = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
     cells.forEach(cell => {
         const number = +cell.innerHTML;
@@ -132,8 +133,10 @@ function checkNineCaseofDigit() {
           }
     });
 
+    //alert(counter);
+
     counter.forEach((number, index) => {
-        if (number === 9){
+        if (number === 8){
             Array.from(document.querySelectorAll('.game__controlls_numbers_num')).map(button => {
                 if (+button.innerHTML === index + 1){
                     button.classList.remove('hide');
