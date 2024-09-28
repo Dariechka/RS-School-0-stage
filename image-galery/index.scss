@@ -1,0 +1,287 @@
+@import './assets/img/font/font.scss';
+
+$text-font: "Lora", serif;
+$medium: 1100px;
+
+html, body {
+    height: 100vh;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(".././assets/img/background.jpeg");
+    background-size: cover;
+    background-position: top;
+}
+
+.img {
+    height: 100%;
+    width: 100%;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.background {
+    z-index: 700;
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: #C4C4C4;
+    opacity: 80%;
+}
+
+.erorr-text {
+    margin-top: 30px;
+    font-family: $text-font;
+    color: #d90429;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3.4vh;
+    display: none;
+}
+
+.search {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-image: url(".././assets/img/forSearch.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    &__logo {
+        display: flex;
+        align-items: center;
+        &_img {
+            width: 100px;
+            height: 100px;
+            @media screen and (max-width: $medium) {
+                width: 80px;
+                height: 80px; 
+            }
+        }
+        &_text {
+            font-family: "Adena";
+            font-weight: 500;
+            font-style: normal;
+            font-size: 6vh;
+            color: #FFC0CB;
+            -webkit-text-stroke: 2px black;
+            margin: 0;
+            @media screen and (max-width: $medium) {
+                font-weight: 450;
+                font-size: 5vh;
+            }
+        }
+    }
+    &__input {
+        position: relative;
+        &_input {
+            width: 550px;
+            height: 35px;
+            overflow: hidden;
+            border: none;
+            background-color: #DDE2E5;
+            border-radius: 20px;
+            padding-left: 50px;
+            font-size: 2vh;
+            font-family: $text-font;
+            z-index: 10;
+            @media screen and (max-width: $medium) {
+                width: 400px;
+                font-size: 1.5vh;
+            }
+        }
+        &_input::placeholder {
+            color: #ACB5BD;
+            font-family: $text-font;
+            font-size: 2vh; 
+            @media screen and (max-width: $medium) {
+                font-size: 1.5vh;
+            } 
+        }
+        &_input:focus {
+            outline: none;
+            background-color: #FFFFFF;
+        }
+        &_button {
+            background-color: transparent;
+            border: none;
+            position: absolute;
+            &_find {
+                left: 1.8%;
+                top: 22%;
+                z-index: 1000;
+                cursor: pointer;
+                fill: #767676;
+            }
+            &_find:hover {
+                fill: #1B1212;
+            }
+            &_clear {
+                left: 91%;
+                top: 22%;
+                z-index: 1000;
+                cursor: pointer;
+                fill: #767676;
+            }
+            &_clear:hover {
+                fill: #1B1212;
+            }
+        }
+    }
+}
+
+.results {
+    max-width: 1300px;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 0.5vh 2vh;
+    &__container {
+        margin-top: 2vh;
+        display: grid;
+        row-gap: 2vh;
+        column-gap: 2%;
+        grid-template-columns: 32% 32% 32%;
+        grid-template-rows: 40vh 20vh 10vh 40vh;
+    }
+    &__img_one {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    &__img_two {
+        grid-column: 2;
+        grid-row: 1;
+    }
+    &__img_three {
+        grid-column: 3;
+        grid-row: 1 / span 2;
+    }
+    &__img_four {
+        grid-column: 1;
+        grid-row: 2 / span 3;
+    }
+    &__img_five {
+        grid-column: 2;
+        grid-row: 2 / span 2;
+    }
+    &__img_six {
+        grid-column: 3;
+        grid-row: 3 / span 2;
+    }
+    &__img_seven {
+        grid-column: 2;
+        grid-row: 4;
+    }
+    &__img {
+        cursor: pointer;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 90% 10%;
+        &_img{
+            overflow: hidden;
+            &_picture {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+        &_author {
+            background-color: #F8F9FA;
+            padding-left: 10px;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-start;
+            align-items: center;
+            &_text {
+                font-family: $text-font;
+                font-weight: 400;
+                font-style: normal;
+                font-size: 2vh;
+                color: #1B1212;
+            }
+        }
+    }
+}
+
+.footer {
+    max-width: 1300px;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 3vh 2vh;
+    @media screen and (max-width: $medium) {
+        padding: 2vh 1.5vh;
+    }
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__img {
+        height: 100%;
+        width: 16vh;
+        @media screen and (max-width: $medium) {
+            width: 10vh;
+        }
+    }
+
+    &__title {
+        font-family: $text-font;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 3vh;
+        color: #1B1212;
+        @media screen and (max-width: $medium) {
+            font-size: 2vh;
+            font-family: $text-font;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 2vh;
+            color: #1B1212;
+        }
+    }
+}
+
+.modal {
+    height: 100vh;
+    width: 55vw;
+    z-index: 1000;
+    position: fixed;
+    left: 24%;
+    &__img {
+        height: 92%;
+    }
+    &__description {
+        height: 8%;
+        font-family: $text-font;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 2vh;
+        color: #1B1212;
+        background-color: #DDE2E5;
+        padding: 8px;
+    }
+}
+
+.button {
+    z-index: 1000;
+    position: fixed;
+    cursor: pointer;
+    top: 50%;
+    left: 2%;
+    &__right {
+        left: 92%;
+    }
+}
