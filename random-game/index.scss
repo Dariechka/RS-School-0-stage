@@ -159,6 +159,15 @@ main {
             &_time {
                 @include text();
             }
+            &_button {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: $hover-lightblue;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
             &_clean {
                 background-color: $lightgray;
                 @include text();
@@ -280,4 +289,12 @@ main {
 
 .error {
     background-color: $red;
+}
+
+.pause {
+    display: none;
+}
+
+.reserve {
+    display: none;
 }

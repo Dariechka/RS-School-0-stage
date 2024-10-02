@@ -5,6 +5,10 @@
     const newGameButton = document.querySelector('.game__controlls_newGame');
     const mistaksNumber = document.querySelector('.game__controlls_top_mistakes_number');
     const timer = document.querySelector('.game__controlls_top_time');
+    const play = document.querySelector('.play');
+    const pause = document.querySelector('.pause');
+
+    let paused = false;
 
     function queryCells() {
         return Array.from(document.querySelectorAll('.game__field_miniGrid_cell'));
@@ -209,8 +213,46 @@
         }
     }
 
+    play.addEventListener('click', () => {
+        document.querySelector('.pause').style.display = 'flex';
+        document.querySelector('.play').style.display = 'none';
+
+        document.querySelector('.main').style.display = 'grid';
+        document.querySelector('.reserve').style.display = 'none';
+        paused = true;
+    });
+
+    pause.addEventListener('click', () => {
+        document.querySelector('.play').style.display = 'flex';
+        document.querySelector('.pause').style.display = 'none';
+        
+        document.querySelector('.reserve').style.display = 'grid';
+        document.querySelector('.main').style.display = 'none';
+        paused = false;
+    });
+
     const startGame = async () => {
+        document.querySelector('.main').style.display = 'none';
+        document.querySelector('.reserve').style.display = 'grid';
         document.querySelector('.audio-start').play();
+
+        let min = 0;
+        let sec = 0;
+        function updateTimer() {
+            if (paused) {
+                return;
+            }
+            sec++;
+            if (sec >= 60) {
+              min++;
+              sec = 0;
+            }
+            sec = sec.toString().padStart(2, '0');
+            min = min.toString().padStart(2, '0');
+            timer.innerHTML = `${min}:${sec}`;
+        }
+        let intervalId = setInterval(updateTimer, 1000);
+
         for (let miniGrid of Array.from(wraper.children)){
             miniGrid.remove();
         }

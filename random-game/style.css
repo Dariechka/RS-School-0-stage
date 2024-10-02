@@ -162,6 +162,15 @@ main {
   font-size: 3vh;
   color: #1B1212;
 }
+.game__controlls_top_button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #7CC1D7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .game__controlls_top_clean {
   background-color: #ededed;
   font-family: "Lora", serif;
@@ -297,6 +306,14 @@ main {
 
 .error {
   background-color: #FAA0A0;
+}
+
+.pause {
+  display: none;
+}
+
+.reserve {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */
