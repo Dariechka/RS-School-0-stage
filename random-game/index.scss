@@ -287,6 +287,23 @@ main {
     }
 }
 
+.modal__window {
+    z-index: 1000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 900px;
+    padding: 40px;
+    border: 1px solid $black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: $lightgray;
+}
+
 .error {
     background-color: $red;
 }

@@ -211,6 +211,25 @@
         if (document.querySelectorAll('.error').length === 1) {
             cell.classList.remove('error');
         }
+
+        if (+mistaksNumber.innerHTML === 3) {
+            mistaksNumber.style.color = '#de6464';
+            openModal();
+        }
+    }
+
+    function openModal(){
+        document.querySelector('.audio-mistake').play();
+        paused = true;
+        document.body.insertAdjacentHTML(
+            `afterbegin`,
+        `<div class="modal__window">
+            <div class="modal__window_img">
+                <img src="./assets/img/potracheno.png" alt="wasted" class="img">
+            </div>
+            <button class="game__controlls_newGame">New Game</button>
+        </div>`);
+        document.querySelector('.game__controlls_newGame').addEventListener('click', startGame);
     }
 
     play.addEventListener('click', () => {
@@ -232,6 +251,11 @@
     });
 
     const startGame = async () => {
+        if (document.querySelector('.modal__window')){
+            document.querySelector('.modal__window').style.display = 'none';
+        }
+        paused = false;
+        mistaksNumber.style.color = '#1B1212';
         document.querySelector('.main').style.display = 'none';
         document.querySelector('.reserve').style.display = 'grid';
         document.querySelector('.audio-start').play();
@@ -251,7 +275,7 @@
             min = min.toString().padStart(2, '0');
             timer.innerHTML = `${min}:${sec}`;
         }
-        let intervalId = setInterval(updateTimer, 1000);
+        setInterval(updateTimer, 1000);
 
         for (let miniGrid of Array.from(wraper.children)){
             miniGrid.remove();
