@@ -366,7 +366,6 @@ main {
   font-style: normal;
   font-size: 3vh;
   color: #1B1212;
-  font-size: 2vh;
 }
 .modal__button {
   width: 300px;
@@ -394,6 +393,33 @@ main {
   background-color: #7CC1D7;
   transform: translateY(2px);
   box-shadow: 0 5px 10px #1B1212;
+}
+.modal__grid {
+  margin: 30px 5px;
+  width: 800px;
+  display: grid;
+  grid-template-columns: 320px 236px 236px;
+  grid-template-rows: repeat(11, 1fr);
+  border: 3px solid #1B1212;
+  grid-gap: 1px;
+  background-color: #1B1212;
+}
+.modal__grid_cell {
+  background-color: #ededed;
+  font-family: "Lora", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: #1B1212;
+  color: #3187A2;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  color: #1B1212;
 }
 
 .error {

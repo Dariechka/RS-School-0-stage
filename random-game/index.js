@@ -271,6 +271,52 @@
         })
     });
 
+    results.addEventListener('click', () => {
+        document.body.insertAdjacentHTML(
+            `afterbegin`,
+        `<div class="modal__window">
+        <h2 class="modal__text">The history of your successful games</h2>
+        <div class="modal__grid">
+            <div class="modal__grid_cell">Game number</div>
+            <div class="modal__grid_cell">Number of errors</div>
+            <div class="modal__grid_cell">Time</div>
+            <div class="modal__grid_cell">Game_1</div>
+            <div class="modal__grid_cell input mistakes"></div>
+            <div class="modal__grid_cell input time"></div>
+            <div class="modal__grid_cell">Game_2</div>
+            <div class="modal__grid_cell input mistakes"></div>
+            <div class="modal__grid_cell input time"></div>
+            <div class="modal__grid_cell">Game_3</div>
+            <div class="modal__grid_cell input mistakes"></div>
+            <div class="modal__grid_cell input time"></div>
+            <div class="modal__grid_cell">Game_4</div>
+            <div class="modal__grid_cell input mistakes"></div>
+            <div class="modal__grid_cell input time"></div>
+            <div class="modal__grid_cell">Game_5</div>
+            <div class="modal__grid_cell input mistakes"></div>
+            <div class="modal__grid_cell input time"></div>
+            <div class="modal__grid_cell">Game_6</div>
+            <div class="modal__grid_cell input mistakes"></div>
+            <div class="modal__grid_cell input time"></div>
+            <div class="modal__grid_cell">Game_7</div>
+            <div class="modal__grid_cell input mistakes"></div>
+            <div class="modal__grid_cell input time"></div>
+            <div class="modal__grid_cell">Game_8</div>
+            <div class="modal__grid_cell input mistakes"></div>
+            <div class="modal__grid_cell input time"></div>
+            <div class="modal__grid_cell">Game_9</div>
+            <div class="modal__grid_cell input mistakes"></div>
+            <div class="modal__grid_cell input time"></div>
+            <div class="modal__grid_cell">Game_10</div>
+            <div class="modal__grid_cell input mistakes"></div>
+            <div class="modal__grid_cell input time"></div>
+        </div>
+        <button class="modal__button">Wow!</button>`);
+        document.querySelector('.modal__button').addEventListener('click', () => {
+            document.querySelector('.modal__window').remove();
+        })
+    })
+
     const startGame = async () => {
         if (document.querySelector('.modal__window')){
             document.querySelector('.modal__window').style.display = 'none';
@@ -324,7 +370,6 @@
 
         queryCells().filter(item => item.innerHTML == 0).forEach(item => item.innerHTML = '');
         queryCells().map(cell => cell.addEventListener('click', () => chooseCell(cell)));
-
     };
 
     newGameButton.addEventListener('click', startGame);

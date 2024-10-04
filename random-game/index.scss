@@ -339,7 +339,6 @@ main {
     }
     &__text {
         @include text();
-        font-size: 2vh;
     }
     &__button {
         width: 300px;
@@ -364,6 +363,29 @@ main {
                 box-shadow: 0 5px 10px $black;
             }
     }
+    &__grid {
+        margin: 30px 5px;
+        width: 800px;
+        display: grid;
+        grid-template-columns: 320px 236px 236px;
+        grid-template-rows: repeat(11, 1fr);
+        border: 3px solid $black;
+        grid-gap: 1px;
+        background-color: $black;
+        &_cell {
+            background-color: $lightgray;
+            @include text();
+            color: $blue;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        } 
+    }
+}
+
+.input {
+    color: $black;
 }
 
 .error {
