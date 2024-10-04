@@ -48,13 +48,49 @@ main {
     max-width: 1300px;
     overflow: hidden;
     margin: 0 auto;
+    &__top {
+        width: 50vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 20px;
+
+    }
     &__title {
         @include text();
         font-style: italic;
         font-size: 4vh;
         text-align: center;
         margin-bottom: 0px;
-        margin-top: 50px;
+        &_small {
+            @include text();
+            font-size: 2vh;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+    }
+    &__options {
+        padding-left: 10px;
+        display: flex;
+        gap: 5px;
+        &_rules {
+            height: 40px;
+            border-radius: 8px;
+            background-color: $lightgray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            @include text();
+            font-size: 2vh;
+            &:hover {
+                background-color: $gray; 
+            }
+            &:active {
+                background-color: $gray; 
+                box-shadow: 0 2px 7px $black;
+            }
+        }
     }
     &__wraper {
         max-width: 800px;
@@ -103,9 +139,6 @@ main {
                 &[checked="checked"] {
                     background-color: $lightblue;
                 }
-                /*&_active {
-                    background-color: $lightblue;
-                }*/
             }
             &_cell:first-child {
                 border-top: 1px solid transparent;
@@ -287,21 +320,50 @@ main {
     }
 }
 
-.modal__window {
-    z-index: 1000;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 900px;
-    padding: 40px;
-    border: 1px solid $black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    background-color: $lightgray;
+.modal {
+    &__window {
+        z-index: 1000;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 900px;
+        padding: 40px;
+        border: 1px solid $black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        background-color: $lightgray;
+    }
+    &__text {
+        @include text();
+        font-size: 2vh;
+    }
+    &__button {
+        width: 300px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include text();
+            color: $white;
+            background-color: $blue;
+            border: none;
+            border-radius: 8px;
+            position: relative;
+            transition: all .2s ease-in-out;
+            cursor: pointer;
+            &:hover {
+                background-color: $hover-lightblue;
+            }
+            &:active {
+                background-color: $hover-lightblue;
+                transform: translateY(2px);
+                box-shadow: 0 5px 10px $black;
+            }
+    }
 }
 
 .error {

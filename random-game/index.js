@@ -7,6 +7,8 @@
     const timer = document.querySelector('.game__controlls_top_time');
     const play = document.querySelector('.play');
     const pause = document.querySelector('.pause');
+    const rules = document.querySelector('.rules');
+    const results = document.querySelector('.results');
 
     let paused = false;
 
@@ -102,6 +104,10 @@
 
         if (document.querySelectorAll('.game__field_miniGrid_cell[checked="checked"]').length === 8) {
             digitButton.classList.add('hide');
+        }
+
+        if (queryCells().filter(cell => cell.innerHTML !== '').length === 50){
+            alert('ready');
         }
     }));
 
@@ -250,6 +256,21 @@
         paused = false;
     });
 
+    rules.addEventListener('click', () => {
+        document.body.insertAdjacentHTML(
+            `afterbegin`,
+        `<div class="modal__window">
+            <h2 class="modal__text">The goal of sudoku is simple: fill in the numbers 1-9 exactly once in every row, column, and 3x3 region.</h2>
+            <div class="modal__window_img">
+                <img src="./assets/img/sudoku-rules.png" alt="wasted" class="img">
+            </div>
+            <button class="modal__button">Understood</button>
+        </div>`);
+        document.querySelector('.modal__button').addEventListener('click', () => {
+            document.querySelector('.modal__window').remove();
+        })
+    });
+
     const startGame = async () => {
         if (document.querySelector('.modal__window')){
             document.querySelector('.modal__window').style.display = 'none';
@@ -303,8 +324,8 @@
 
         queryCells().filter(item => item.innerHTML == 0).forEach(item => item.innerHTML = '');
         queryCells().map(cell => cell.addEventListener('click', () => chooseCell(cell)));
+
     };
 
     newGameButton.addEventListener('click', startGame);
-    //await startGame();
 })();

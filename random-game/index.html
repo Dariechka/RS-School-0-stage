@@ -10,12 +10,18 @@
 
 <body>
     <main>
-        <div class="background"></div>
         <audio src="./assets/sounds/start-game.mp3" preload="metadata" class="audio-start"></audio>
         <audio src="./assets/sounds/mistake.mp3" preload="metadata" class="audio-mistake"></audio>
         <audio src="./assets/sounds/complete.mp3" preload="metadata" class="audio-complete"></audio>
         <div class="game">
-            <h1 class="game__title">Sudoku</h1>
+            <div class="game__top">
+                <div class="game__options">
+                    <button class="game__options_rules rules">Rules</button>
+                    <button class="game__options_rules results">Your results</button>
+                </div>
+                <h1 class="game__title">Sudoku</h1>
+            </div>
+            <!-- <h2 class="game__title_small">A 9×9 square must be filled in with numbers from 1-9 with no repeated numbers in each line, horizontally or vertically.</h2> -->
             <div class="game__wraper">
                 <div class="game__field reserve">
                     <div class="game__field_miniGrid 1">

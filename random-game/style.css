@@ -29,6 +29,13 @@ main {
   overflow: hidden;
   margin: 0 auto;
 }
+.game__top {
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
 .game__title {
   font-family: "Lora", serif;
   font-weight: 400;
@@ -39,7 +46,43 @@ main {
   font-size: 4vh;
   text-align: center;
   margin-bottom: 0px;
-  margin-top: 50px;
+}
+.game__title_small {
+  font-family: "Lora", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: #1B1212;
+  font-size: 2vh;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.game__options {
+  padding-left: 10px;
+  display: flex;
+  gap: 5px;
+}
+.game__options_rules {
+  height: 40px;
+  border-radius: 8px;
+  background-color: #ededed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  font-family: "Lora", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: #1B1212;
+  font-size: 2vh;
+}
+.game__options_rules:hover {
+  background-color: #E5E4E2;
+}
+.game__options_rules:active {
+  background-color: #E5E4E2;
+  box-shadow: 0 2px 7px #1B1212;
 }
 .game__wraper {
   max-width: 800px;
@@ -85,9 +128,6 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  /*&_active {
-      background-color: $lightblue;
-  }*/
 }
 .game__field_miniGrid_cell:active {
   background-color: #DEEFF5;
@@ -319,6 +359,41 @@ main {
   align-items: center;
   border-radius: 8px;
   background-color: #ededed;
+}
+.modal__text {
+  font-family: "Lora", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: #1B1212;
+  font-size: 2vh;
+}
+.modal__button {
+  width: 300px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lora", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
+  color: #1B1212;
+  color: #FFFFFF;
+  background-color: #3187A2;
+  border: none;
+  border-radius: 8px;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.modal__button:hover {
+  background-color: #7CC1D7;
+}
+.modal__button:active {
+  background-color: #7CC1D7;
+  transform: translateY(2px);
+  box-shadow: 0 5px 10px #1B1212;
 }
 
 .error {
