@@ -9,7 +9,6 @@ html, body {
 }
 
 body {
-  background-image: url(".././assets/img/background.jpeg");
   background-size: cover;
   background-position: top;
 }
@@ -210,6 +209,9 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.game__controlls_top_button:disabled, .game__controlls_top_button[disabled] {
+  background-color: #ededed;
 }
 .game__controlls_top_clean {
   background-color: #ededed;

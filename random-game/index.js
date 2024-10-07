@@ -9,8 +9,93 @@
     const pause = document.querySelector('.pause');
     const rules = document.querySelector('.rules');
     const results = document.querySelector('.results');
+    const fields = await fetchFields();
+    const usedFields = [];
 
+    let sec = 0;
     let paused = false;
+    let intervalId;
+
+    const gameResultsStorageKey = 'gameResults';
+    function getGameState() {
+        return JSON.parse(
+            localStorage.getItem(gameResultsStorageKey) || `{
+                "counter": 1,
+                "top": [],
+                "curent": {}
+            }`
+        );
+    }
+    function saveGameResult(time, mistakes) {
+        paused = true; // stop game timer on win
+
+        const state = getGameState();
+        state.top.push({
+            number: state.counter,
+            mistakes,
+            time
+        });
+        state.curent.mistakes = mistakes;
+        state.curent.time = time;
+        state.top.sort((a, b) => a.time - b.time);
+        state.top = state.top.slice(0, 11);
+        state.counter++;
+        localStorage.setItem(gameResultsStorageKey, JSON.stringify(state));
+    }
+    function renderTime(time) {
+        const sec = (time % 60).toString().padStart(2, '0');
+        const min = (Math.floor(time / 60)).toString().padStart(2, '0');
+        return `${min}:${sec}`;
+    }
+    function startTimer() {
+        function updateTimer() {
+            if (paused) {
+                return;
+            }
+            sec++;
+            timer.innerHTML = renderTime(sec);
+        }
+        if (intervalId) {
+            clearInterval(intervalId);
+        }
+        sec = 0;
+        timer.innerHTML = renderTime(sec);
+        paused = false;
+        intervalId = setInterval(updateTimer, 1000);
+    }
+
+    function getNextGameField() {
+        if (usedFields.length === fields.length) {
+            usedFields = [];
+        }
+        const unusedFields = [...new Set(fields).difference(new Set(usedFields))];
+        const indexOfField = Math.ceil(unusedFields.length * Math.random());
+        const field = unusedFields[indexOfField];
+        usedFields.push(field);
+        return field;
+    }
+
+    function finishGame() {
+        if (isAllCellsPopulated()){
+            document.querySelector('.audio-complete').play();
+            saveGameResult(sec, mistaksNumber.innerHTML);
+            openResults();
+            Array.from(document.querySelectorAll('.game__controlls_top_button')).forEach(button => button.setAttribute('disabled'));
+        } else {
+            Array.from(document.querySelectorAll('.game__controlls_top_button')).forEach(button => button.removeAttribute('disabled'));
+            mistaksNumber.style.color = '#1B1212';
+            document.querySelector('.main').style.display = 'none';
+            document.querySelector('.reserve').style.display = 'grid';
+        }
+    }
+
+    function isAllCellsPopulated() {
+        return queryCells().filter(cell => cell.innerHTML !== '').length === 81;
+    }
+
+    function isNoneCellsPopulated() {
+        return queryCells().every(cell => cell.innerHTML === '');
+    }
 
     function queryCells() {
         return Array.from(document.querySelectorAll('.game__field_miniGrid_cell'));
@@ -106,12 +191,13 @@
             digitButton.classList.add('hide');
         }
 
-        if (queryCells().filter(cell => cell.innerHTML !== '').length === 50){
-            alert('ready');
-        }
+        finishGame();
     }));
 
     cleanButton.addEventListener('click', () => {
+        if (isAllCellsPopulated()) {
+            return;
+        }
         const activeCell = document.querySelector('.active');
         if (activeCell.style.color !== 'rgb(49, 135, 162)') return;
         activeCell.innerHTML = '';
@@ -207,6 +293,15 @@
             }
         });
 
+        let miniGridofCell = cell.closest('.game__field_miniGrid');
+        for (let item of Array.from(miniGridofCell.children)) {
+            if (item.innerHTML === cell.innerHTML && Array.from(item.classList)[1] !== Array.from(cell.classList)[1]){
+                item.removeAttribute('checked', 'checked');
+                item.removeAttribute('hover', 'hover');
+                item.classList.add('error');
+            }
+        }
+
         if (document.querySelectorAll('.error').length > 1) {
             cell.removeAttribute('checked', 'checked');
             cell.removeAttribute('hover', 'hover');
@@ -219,7 +314,7 @@
         }
 
         if (+mistaksNumber.innerHTML === 3) {
-            mistaksNumber.style.color = '#de6464';
+            document.querySelector('.game__controlls_top_mistakes_number').style.color = '#de6464';
             openModal();
         }
     }
@@ -238,7 +333,73 @@
         document.querySelector('.game__controlls_newGame').addEventListener('click', startGame);
     }
 
+    function openResults() {
+        document.body.insertAdjacentHTML(
+            `afterbegin`,
+        `<div class="modal__window">
+            <h2 class="modal__text">The history of your successful games</h2>
+            <div class="modal__grid">
+                <div class="modal__grid_cell">Game number</div>
+                <div class="modal__grid_cell">Number of errors</div>
+                <div class="modal__grid_cell">Time</div>
+                <div class="modal__grid_cell">Curent game</div>
+                <div class="modal__grid_cell input mistakes"></div>
+                <div class="modal__grid_cell input time"></div>
+                <div class="modal__grid_cell round"></div>
+                <div class="modal__grid_cell input mistakes"></div>
+                <div class="modal__grid_cell input time"></div>
+                <div class="modal__grid_cell round"></div>
+                <div class="modal__grid_cell input mistakes"></div>
+                <div class="modal__grid_cell input time"></div>
+                <div class="modal__grid_cell round"></div>
+                <div class="modal__grid_cell input mistakes"></div>
+                <div class="modal__grid_cell input time"></div>
+                <div class="modal__grid_cell round"></div>
+                <div class="modal__grid_cell input mistakes"></div>
+                <div class="modal__grid_cell input time"></div>
+                <div class="modal__grid_cell round"></div>
+                <div class="modal__grid_cell input mistakes"></div>
+                <div class="modal__grid_cell input time"></div>
+                <div class="modal__grid_cell round"></div>
+                <div class="modal__grid_cell input mistakes"></div>
+                <div class="modal__grid_cell input time"></div>
+                <div class="modal__grid_cell round"></div>
+                <div class="modal__grid_cell input mistakes"></div>
+                <div class="modal__grid_cell input time"></div>
+                <div class="modal__grid_cell round"></div>
+                <div class="modal__grid_cell input mistakes"></div>
+                <div class="modal__grid_cell input time"></div>
+                <div class="modal__grid_cell round"></div>
+                <div class="modal__grid_cell input mistakes"></div>
+                <div class="modal__grid_cell input time"></div>
+                <div class="modal__grid_cell round"></div>
+                <div class="modal__grid_cell input mistakes"></div>
+                <div class="modal__grid_cell input time"></div>
+                <div class="modal__grid_cell round"></div>
+                <div class="modal__grid_cell input mistakes"></div>
+                <div class="modal__grid_cell input time"></div>
+            </div>
+            <button class="modal__button">Wow!</button>
+        </div>`);
+        document.querySelector('.modal__button').addEventListener('click', () => {
+            document.querySelector('.modal__window').remove();
+        });
+
+        const state = getGameState();
+        Array.from(document.querySelectorAll('.mistakes'))[0].innerHTML = `${state.curent.mistakes}`;
+        Array.from(document.querySelectorAll('.time'))[0].innerHTML = renderTime(state.curent.time);
+        for (let i = 0; i < state.top.length; i++) {
+            const game = state.top[i];
+            Array.from(document.querySelectorAll('.round'))[i].innerHTML = `Game_${game.number}`;
+            Array.from(document.querySelectorAll('.mistakes'))[i + 1].innerHTML = `${game.mistakes}`;
+            Array.from(document.querySelectorAll('.time'))[i + 1].innerHTML = renderTime(game.time);
+        }
+    }
+
     play.addEventListener('click', () => {
+        if (isAllCellsPopulated() || isNoneCellsPopulated()) {
+            return;
+        }
         document.querySelector('.pause').style.display = 'flex';
         document.querySelector('.play').style.display = 'none';
 
@@ -271,87 +432,24 @@
         })
     });
 
-    results.addEventListener('click', () => {
-        document.body.insertAdjacentHTML(
-            `afterbegin`,
-        `<div class="modal__window">
-        <h2 class="modal__text">The history of your successful games</h2>
-        <div class="modal__grid">
-            <div class="modal__grid_cell">Game number</div>
-            <div class="modal__grid_cell">Number of errors</div>
-            <div class="modal__grid_cell">Time</div>
-            <div class="modal__grid_cell">Game_1</div>
-            <div class="modal__grid_cell input mistakes"></div>
-            <div class="modal__grid_cell input time"></div>
-            <div class="modal__grid_cell">Game_2</div>
-            <div class="modal__grid_cell input mistakes"></div>
-            <div class="modal__grid_cell input time"></div>
-            <div class="modal__grid_cell">Game_3</div>
-            <div class="modal__grid_cell input mistakes"></div>
-            <div class="modal__grid_cell input time"></div>
-            <div class="modal__grid_cell">Game_4</div>
-            <div class="modal__grid_cell input mistakes"></div>
-            <div class="modal__grid_cell input time"></div>
-            <div class="modal__grid_cell">Game_5</div>
-            <div class="modal__grid_cell input mistakes"></div>
-            <div class="modal__grid_cell input time"></div>
-            <div class="modal__grid_cell">Game_6</div>
-            <div class="modal__grid_cell input mistakes"></div>
-            <div class="modal__grid_cell input time"></div>
-            <div class="modal__grid_cell">Game_7</div>
-            <div class="modal__grid_cell input mistakes"></div>
-            <div class="modal__grid_cell input time"></div>
-            <div class="modal__grid_cell">Game_8</div>
-            <div class="modal__grid_cell input mistakes"></div>
-            <div class="modal__grid_cell input time"></div>
-            <div class="modal__grid_cell">Game_9</div>
-            <div class="modal__grid_cell input mistakes"></div>
-            <div class="modal__grid_cell input time"></div>
-            <div class="modal__grid_cell">Game_10</div>
-            <div class="modal__grid_cell input mistakes"></div>
-            <div class="modal__grid_cell input time"></div>
-        </div>
-        <button class="modal__button">Wow!</button>`);
-        document.querySelector('.modal__button').addEventListener('click', () => {
-            document.querySelector('.modal__window').remove();
-        })
-    })
+    results.addEventListener('click', () => openResults());
 
     const startGame = async () => {
         if (document.querySelector('.modal__window')){
             document.querySelector('.modal__window').style.display = 'none';
         }
+        finishGame();
         paused = false;
-        mistaksNumber.style.color = '#1B1212';
-        document.querySelector('.main').style.display = 'none';
-        document.querySelector('.reserve').style.display = 'grid';
         document.querySelector('.audio-start').play();
 
-        let min = 0;
-        let sec = 0;
-        function updateTimer() {
-            if (paused) {
-                return;
-            }
-            sec++;
-            if (sec >= 60) {
-              min++;
-              sec = 0;
-            }
-            sec = sec.toString().padStart(2, '0');
-            min = min.toString().padStart(2, '0');
-            timer.innerHTML = `${min}:${sec}`;
-        }
-        setInterval(updateTimer, 1000);
+        startTimer();
 
         for (let miniGrid of Array.from(wraper.children)){
             miniGrid.remove();
         }
         mistaksNumber.innerHTML = '0';
         Array.from(document.querySelectorAll('.game__controlls_numbers_num')).map(button => button.classList.remove('hide'));
-        const fields = await fetchFields();
-        let numberOfField = Math.ceil(fields.length * Math.random());
-        let field = fields.splice(numberOfField - 1, 1).flatMap((x) => x);
+        const field = getNextGameField();
 
         const fieldHtml = field.map((item, index) => {
             return `<div class="game__field_miniGrid ${index + 1}">

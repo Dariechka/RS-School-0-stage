@@ -29,7 +29,6 @@ html, body {
 }
 
 body {
-    background-image: url(".././assets/img/background.jpeg");
     background-size: cover;
     background-position: top;
 }
@@ -200,6 +199,12 @@ main {
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                cursor: pointer;
+                &:disabled,
+                &[disabled] {
+                    background-color: $lightgray;
+                    cursor: auto;
+                }
             }
             &_clean {
                 background-color: $lightgray;
