@@ -3,7 +3,7 @@
     const digitButtons = Array.from(document.querySelectorAll('.game__controlls_numbers_num'));
     const cleanButton = document.querySelector('.game__controlls_top_clean');
     const newGameButton = document.querySelector('.game__controlls_newGame');
-    const mistaksNumber = document.querySelector('.game__controlls_top_mistakes_number');
+    const mistakesNumber = document.querySelector('.game__controlls_top_mistakes_number');
     const timer = document.querySelector('.game__controlls_top_time');
     const play = document.querySelector('.play');
     const pause = document.querySelector('.pause');
@@ -20,9 +20,8 @@
     function getGameState() {
         return JSON.parse(
             localStorage.getItem(gameResultsStorageKey) || `{
-                "counter": 1,
-                "top": [],
-                "curent": {}
+                "counter": 0,
+                "top": []
             }`
         );
     }
@@ -30,16 +29,14 @@
         paused = true; // stop game timer on win
 
         const state = getGameState();
+        state.counter++;
         state.top.push({
             number: state.counter,
             mistakes,
             time
         });
-        state.curent.mistakes = mistakes;
-        state.curent.time = time;
         state.top.sort((a, b) => a.time - b.time);
-        state.top = state.top.slice(0, 11);
-        state.counter++;
+        state.top = state.top.slice(0, 10);
         localStorage.setItem(gameResultsStorageKey, JSON.stringify(state));
     }
     function renderTime(time) {
@@ -76,16 +73,11 @@
     }
 
     function finishGame() {
-        if (isAllCellsPopulated()){
+        if (isAllCellsPopulated()) {
             document.querySelector('.audio-complete').play();
-            saveGameResult(sec, mistaksNumber.innerHTML);
+            saveGameResult(sec, mistakesNumber.innerHTML);
             openResults();
-            Array.from(document.querySelectorAll('.game__controlls_top_button')).forEach(button => button.setAttribute('disabled'));
-        } else {
-            Array.from(document.querySelectorAll('.game__controlls_top_button')).forEach(button => button.removeAttribute('disabled'));
-            mistaksNumber.style.color = '#1B1212';
-            document.querySelector('.main').style.display = 'none';
-            document.querySelector('.reserve').style.display = 'grid';
+            Array.from(document.querySelectorAll('.game__controlls_top_button')).forEach(button => button.setAttribute('disabled', 'disabled'));
         }
     }
 
@@ -93,9 +85,9 @@
         return queryCells().filter(cell => cell.innerHTML !== '').length === 81;
     }
 
-    function isNoneCellsPopulated() {
-        return queryCells().every(cell => cell.innerHTML === '');
-    }
+    // function isNoneCellsPopulated() {
+    //     return queryCells().every(cell => cell.innerHTML === '');
+    // }
 
     function queryCells() {
         return Array.from(document.querySelectorAll('.game__field_miniGrid_cell'));
@@ -199,6 +191,7 @@
             return;
         }
         const activeCell = document.querySelector('.active');
+        if (activeCell === null) return;
         if (activeCell.style.color !== 'rgb(49, 135, 162)') return;
         activeCell.innerHTML = '';
         Array.from(document.querySelectorAll('.error')).forEach(cell => cell.classList.remove('error'));
@@ -306,17 +299,26 @@
             cell.removeAttribute('checked', 'checked');
             cell.removeAttribute('hover', 'hover');
             cell.classList.add('error');
-            mistaksNumber.innerHTML = +mistaksNumber.innerHTML + 1
+            mistakesNumber.textContent = +mistakesNumber.textContent + 1
         }
 
         if (document.querySelectorAll('.error').length === 1) {
             cell.classList.remove('error');
         }
 
-        if (+mistaksNumber.innerHTML === 3) {
-            document.querySelector('.game__controlls_top_mistakes_number').style.color = '#de6464';
+        // setTimeout(() => {
+        if (+mistakesNumber.textContent === 3) {
+            mistakesNumber.classList.add('error');
+            // mistakesNumber.style.color = 'rgb(222, 100, 100)';
             openModal();
         }
+        // }, 0);
+        // if (+mistaksNumber.innerHTML === 3) {
+        //     // mistaksNumber.style.color = 'rgb(222, 100, 100)';
+        //     mistaksNumber.style.color = '#de6464';
+        //     alert(mistaksNumber.style.color);
+        //     openModal();
+        // }
     }
 
     function openModal(){
@@ -342,9 +344,6 @@
                 <div class="modal__grid_cell">Game number</div>
                 <div class="modal__grid_cell">Number of errors</div>
                 <div class="modal__grid_cell">Time</div>
-                <div class="modal__grid_cell">Curent game</div>
-                <div class="modal__grid_cell input mistakes"></div>
-                <div class="modal__grid_cell input time"></div>
                 <div class="modal__grid_cell round"></div>
                 <div class="modal__grid_cell input mistakes"></div>
                 <div class="modal__grid_cell input time"></div>
@@ -386,13 +385,27 @@
         });
 
         const state = getGameState();
-        Array.from(document.querySelectorAll('.mistakes'))[0].innerHTML = `${state.curent.mistakes}`;
-        Array.from(document.querySelectorAll('.time'))[0].innerHTML = renderTime(state.curent.time);
         for (let i = 0; i < state.top.length; i++) {
             const game = state.top[i];
             Array.from(document.querySelectorAll('.round'))[i].innerHTML = `Game_${game.number}`;
-            Array.from(document.querySelectorAll('.mistakes'))[i + 1].innerHTML = `${game.mistakes}`;
-            Array.from(document.querySelectorAll('.time'))[i + 1].innerHTML = renderTime(game.time);
+            Array.from(document.querySelectorAll('.mistakes'))[i].innerHTML = `${game.mistakes}`;
+            Array.from(document.querySelectorAll('.time'))[i].innerHTML = renderTime(game.time);
+        }
+
+        if (state.top.find(obj => obj.number === state.counter)) {
+            const toWiteCell = Array.from(document.querySelectorAll('.round')).find(item => item.innerHTML === `Game_${state.counter}`);
+            toWiteCell.style.backgroundColor = '#FFFFFF';
+            toWiteCell.nextSibling.nextSibling.style.backgroundColor = '#FFFFFF';
+            toWiteCell.nextSibling.nextSibling.nextSibling.nextSibling.style.backgroundColor = '#FFFFFF';
+        } else {
+            document.querySelector('.modal__grid').insertAdjacentHTML(
+                `beforeend`,
+            `
+            <div class="modal__grid_cell round" style="background-color: rgb(255, 255, 255)">Game_${state.counter}</div>
+            <div class="modal__grid_cell input mistakes" style="background-color: rgb(255, 255, 255)">${mistakesNumber.innerHTML}</div>
+            <div class="modal__grid_cell input time" style="background-color: rgb(255, 255, 255)">${timer.innerHTML}</div>
+            `
+            );
         }
     }
 
@@ -435,10 +448,14 @@
     results.addEventListener('click', () => openResults());
 
     const startGame = async () => {
+        mistakesNumber.classList.remove('error');
+        document.querySelector('.main').style.display = 'none';
+        document.querySelector('.reserve').style.display = 'grid';
+        Array.from(document.querySelectorAll('.game__controlls_top_button')).forEach(button => button.removeAttribute('disabled', 'disabled'));
+
         if (document.querySelector('.modal__window')){
             document.querySelector('.modal__window').style.display = 'none';
         }
-        finishGame();
         paused = false;
         document.querySelector('.audio-start').play();
 
@@ -447,7 +464,7 @@
         for (let miniGrid of Array.from(wraper.children)){
             miniGrid.remove();
         }
-        mistaksNumber.innerHTML = '0';
+        mistakesNumber.innerHTML = '0';
         Array.from(document.querySelectorAll('.game__controlls_numbers_num')).map(button => button.classList.remove('hide'));
         const field = getNextGameField();
 

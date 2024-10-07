@@ -209,9 +209,11 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .game__controlls_top_button:disabled, .game__controlls_top_button[disabled] {
   background-color: #ededed;
+  cursor: auto;
 }
 .game__controlls_top_clean {
   background-color: #ededed;
