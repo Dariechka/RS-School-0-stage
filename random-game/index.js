@@ -16,6 +16,32 @@
     let paused = false;
     let intervalId;
 
+    function queryCells() {
+        return Array.from(document.querySelectorAll('.game__field_miniGrid_cell'));
+    }
+
+    function queryMiniGrids() {
+        return Array.from(document.querySelectorAll('.game__field_miniGrid'));
+    }
+
+    //fetch fields and choose one for game
+    async function fetchFields() {
+        const response = await fetch('./fields.json');
+        return await response.json();
+    }
+
+    function getNextGameField() {
+        if (usedFields.length === fields.length) {
+            usedFields.splice(0, usedFields.length);
+        }
+        const unusedFields = [...new Set(fields).difference(new Set(usedFields))];
+        const indexOfField = Math.floor(unusedFields.length * Math.random());
+        const field = unusedFields[indexOfField];
+        usedFields.push(field);
+        return field;
+    }
+
+    //get and save state in localstorage
     const gameResultsStorageKey = 'gameResults';
     function getGameState() {
         return JSON.parse(
@@ -26,19 +52,23 @@
         );
     }
     function saveGameResult(time, mistakes) {
-        paused = true; // stop game timer on win
+        pauseTimer(); // stop game timer on win
 
         const state = getGameState();
         state.counter++;
-        state.top.push({
+        const lastGame = {
             number: state.counter,
             mistakes,
             time
-        });
+        };
+        state.top.push(lastGame);
         state.top.sort((a, b) => a.time - b.time);
         state.top = state.top.slice(0, 10);
         localStorage.setItem(gameResultsStorageKey, JSON.stringify(state));
+        return lastGame;
     }
+
+    //functions for timer
     function renderTime(time) {
         const sec = (time % 60).toString().padStart(2, '0');
         const min = (Math.floor(time / 60)).toString().padStart(2, '0');
@@ -57,51 +87,11 @@
         }
         sec = 0;
         timer.innerHTML = renderTime(sec);
-        paused = false;
+        playTimer();
         intervalId = setInterval(updateTimer, 1000);
     }
 
-    function getNextGameField() {
-        if (usedFields.length === fields.length) {
-            usedFields = [];
-        }
-        const unusedFields = [...new Set(fields).difference(new Set(usedFields))];
-        const indexOfField = Math.ceil(unusedFields.length * Math.random());
-        const field = unusedFields[indexOfField];
-        usedFields.push(field);
-        return field;
-    }
-
-    function finishGame() {
-        if (isAllCellsPopulated()) {
-            document.querySelector('.audio-complete').play();
-            saveGameResult(sec, mistakesNumber.innerHTML);
-            openResults();
-            Array.from(document.querySelectorAll('.game__controlls_top_button')).forEach(button => button.setAttribute('disabled', 'disabled'));
-        }
-    }
-
-    function isAllCellsPopulated() {
-        return queryCells().filter(cell => cell.innerHTML !== '').length === 81;
-    }
-
-    // function isNoneCellsPopulated() {
-    //     return queryCells().every(cell => cell.innerHTML === '');
-    // }
-
-    function queryCells() {
-        return Array.from(document.querySelectorAll('.game__field_miniGrid_cell'));
-    }
-
-    function queryMiniGrids() {
-        return Array.from(document.querySelectorAll('.game__field_miniGrid'));
-    }
-
-    async function fetchFields() {
-        const response = await fetch('./fields.json');
-        return await response.json();
-    }
-
+    //functions for hover and highlight cells, find mistakes
     function chooseCell(cell) {
         if(document.querySelectorAll('.error').length > 0) return;
         if (!document.querySelector('.game__field_miniGrid[hover="hover"]')) {
@@ -119,6 +109,19 @@
 
     function clearHoverCells() {
         Array.from(document.querySelectorAll('.game__field_miniGrid_cell[hover="hover"]')).forEach(cell => cell.removeAttribute('hover'));
+    }
+
+    function highlightDigits(cell) {
+        const digit = cell.innerHTML;
+        queryCells().forEach(cell => {
+            cell.removeAttribute('checked');
+            cell.classList.remove('active');
+        })
+        cell.setAttribute('checked', 'checked');
+        cell.classList.add('active');
+        if (digit === '') return;
+
+        queryCells().forEach(cell => (cell.innerHTML === digit) ? cell.setAttribute('checked', 'checked') : cell);
     }
 
     function findRowsforHover(cell) {
@@ -152,53 +155,6 @@
             }
         })
     }
-
-    function highlightDigits(cell) {
-        const digit = cell.innerHTML;
-        queryCells().forEach(cell => {
-            cell.removeAttribute('checked');
-            cell.classList.remove('active');
-        })
-        cell.setAttribute('checked', 'checked');
-        cell.classList.add('active');
-        if (digit === '') return;
-
-        queryCells().forEach(cell => (cell.innerHTML === digit) ? cell.setAttribute('checked', 'checked') : cell);
-    }
-
-    digitButtons.forEach(digitButton => digitButton.addEventListener('click', () => {
-        if (document.querySelectorAll('.game__field_miniGrid_cell[checked="checked"]').length > 1) {
-            return; // todo
-        }
-
-        const digit = digitButton.innerHTML;
-        const checkedCell = document.querySelector('.game__field_miniGrid_cell[checked="checked"]');
-        checkedCell.innerHTML = digit;
-        checkedCell.style.color = '#3187A2';
-        checkNineCaseofDigit();
-        highlightDigits(checkedCell);
-        checkMistakes(checkedCell);
-
-        if (document.querySelectorAll('.game__field_miniGrid_cell[checked="checked"]').length === 8) {
-            digitButton.classList.add('hide');
-        }
-
-        finishGame();
-    }));
-
-    cleanButton.addEventListener('click', () => {
-        if (isAllCellsPopulated()) {
-            return;
-        }
-        const activeCell = document.querySelector('.active');
-        if (activeCell === null) return;
-        if (activeCell.style.color !== 'rgb(49, 135, 162)') return;
-        activeCell.innerHTML = '';
-        Array.from(document.querySelectorAll('.error')).forEach(cell => cell.classList.remove('error'));
-        highlightDigits(activeCell);
-
-        checkNineCaseofDigit();
-    });
 
     function checkNineCaseofDigit() {
         let counter = [0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -306,24 +262,16 @@
             cell.classList.remove('error');
         }
 
-        // setTimeout(() => {
         if (+mistakesNumber.textContent === 3) {
             mistakesNumber.classList.add('error');
-            // mistakesNumber.style.color = 'rgb(222, 100, 100)';
             openModal();
         }
-        // }, 0);
-        // if (+mistaksNumber.innerHTML === 3) {
-        //     // mistaksNumber.style.color = 'rgb(222, 100, 100)';
-        //     mistaksNumber.style.color = '#de6464';
-        //     alert(mistaksNumber.style.color);
-        //     openModal();
-        // }
     }
 
+    //for modals
     function openModal(){
         document.querySelector('.audio-mistake').play();
-        paused = true;
+        pauseTimer();
         document.body.insertAdjacentHTML(
             `afterbegin`,
         `<div class="modal__window">
@@ -335,7 +283,7 @@
         document.querySelector('.game__controlls_newGame').addEventListener('click', startGame);
     }
 
-    function openResults() {
+    function openResults(lastGame) {
         document.body.insertAdjacentHTML(
             `afterbegin`,
         `<div class="modal__window">
@@ -392,8 +340,10 @@
             Array.from(document.querySelectorAll('.time'))[i].innerHTML = renderTime(game.time);
         }
 
-        if (state.top.find(obj => obj.number === state.counter)) {
-            const toWiteCell = Array.from(document.querySelectorAll('.round')).find(item => item.innerHTML === `Game_${state.counter}`);
+        if (!lastGame) {
+            return;
+        } else if (state.top.find(obj => obj.number === lastGame.number)) {
+            const toWiteCell = Array.from(document.querySelectorAll('.round')).find(item => item.innerHTML === `Game_${lastGame.number}`);
             toWiteCell.style.backgroundColor = '#FFFFFF';
             toWiteCell.nextSibling.nextSibling.style.backgroundColor = '#FFFFFF';
             toWiteCell.nextSibling.nextSibling.nextSibling.nextSibling.style.backgroundColor = '#FFFFFF';
@@ -401,33 +351,62 @@
             document.querySelector('.modal__grid').insertAdjacentHTML(
                 `beforeend`,
             `
-            <div class="modal__grid_cell round" style="background-color: rgb(255, 255, 255)">Game_${state.counter}</div>
-            <div class="modal__grid_cell input mistakes" style="background-color: rgb(255, 255, 255)">${mistakesNumber.innerHTML}</div>
-            <div class="modal__grid_cell input time" style="background-color: rgb(255, 255, 255)">${timer.innerHTML}</div>
+            <div class="modal__grid_cell round" style="background-color: rgb(255, 255, 255)">Game_${lastGame.number}</div>
+            <div class="modal__grid_cell input mistakes" style="background-color: rgb(255, 255, 255)">${lastGame.mistakes}</div>
+            <div class="modal__grid_cell input time" style="background-color: rgb(255, 255, 255)">${lastGame.time}</div>
             `
             );
         }
     }
 
-    play.addEventListener('click', () => {
-        if (isAllCellsPopulated() || isNoneCellsPopulated()) {
+    //eventListeners
+    cleanButton.addEventListener('click', () => {
+        if (isAllCellsPopulated()) {
             return;
         }
+        const activeCell = document.querySelector('.active');
+        if (activeCell === null) return;
+        if (activeCell.style.color !== 'rgb(49, 135, 162)') return;
+        activeCell.innerHTML = '';
+        Array.from(document.querySelectorAll('.error')).forEach(cell => cell.classList.remove('error'));
+        highlightDigits(activeCell);
+
+        checkNineCaseofDigit();
+    });
+
+    function isGameInProgress() {
+        return !!intervalId;
+    }
+
+    function playTimer() {
         document.querySelector('.pause').style.display = 'flex';
         document.querySelector('.play').style.display = 'none';
 
-        document.querySelector('.main').style.display = 'grid';
-        document.querySelector('.reserve').style.display = 'none';
-        paused = true;
+        document.querySelector('.main').style.display = 'none'
+        document.querySelector('.reserve').style.display = 'grid';;
+        paused = false;
+    }
+
+    play.addEventListener('click', () => {
+        if (isAllCellsPopulated() || !isGameInProgress()) {
+            return;
+        }
+        playTimer();
     });
 
-    pause.addEventListener('click', () => {
+    function pauseTimer() {
         document.querySelector('.play').style.display = 'flex';
         document.querySelector('.pause').style.display = 'none';
         
-        document.querySelector('.reserve').style.display = 'grid';
-        document.querySelector('.main').style.display = 'none';
-        paused = false;
+        document.querySelector('.reserve').style.display = 'none';
+        document.querySelector('.main').style.display = 'grid';
+        paused = true;
+    }
+    pause.addEventListener('click', () => {
+        if (!isGameInProgress()) {
+            return;
+        }
+        pauseTimer();
     });
 
     rules.addEventListener('click', () => {
@@ -447,6 +426,41 @@
 
     results.addEventListener('click', () => openResults());
 
+    digitButtons.forEach(digitButton => digitButton.addEventListener('click', () => {
+        if (document.querySelectorAll('.game__field_miniGrid_cell[checked="checked"]').length > 1) {
+            return; // todo
+        }
+
+        const digit = digitButton.innerHTML;
+        const checkedCell = document.querySelector('.game__field_miniGrid_cell[checked="checked"]');
+        checkedCell.innerHTML = digit;
+        checkedCell.style.color = '#3187A2';
+        checkNineCaseofDigit();
+        highlightDigits(checkedCell);
+        checkMistakes(checkedCell);
+
+        if (document.querySelectorAll('.game__field_miniGrid_cell[checked="checked"]').length === 8) {
+            digitButton.classList.add('hide');
+        }
+
+        finishGame();
+    }));
+
+    //for finish
+    function finishGame() {
+        if (isAllCellsPopulated()) {
+            document.querySelector('.audio-complete').play();
+            const lastGame = saveGameResult(sec, mistakesNumber.innerHTML);
+            openResults(lastGame);
+            Array.from(document.querySelectorAll('.game__controlls_top_button')).forEach(button => button.setAttribute('disabled', 'disabled'));
+        }
+    }
+
+    function isAllCellsPopulated() {
+        return queryCells().filter(cell => cell.innerHTML !== '').length === 81;
+    }
+
+    //for start game
     const startGame = async () => {
         mistakesNumber.classList.remove('error');
         document.querySelector('.main').style.display = 'none';
@@ -456,7 +470,7 @@
         if (document.querySelector('.modal__window')){
             document.querySelector('.modal__window').style.display = 'none';
         }
-        paused = false;
+        playTimer();
         document.querySelector('.audio-start').play();
 
         startTimer();
