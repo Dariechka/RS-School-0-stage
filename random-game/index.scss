@@ -48,12 +48,16 @@ main {
     overflow: hidden;
     margin: 0 auto;
     &__top {
-        width: 50vw;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        margin-top: 20px;
-
+        margin-top: 30px;
+        gap: 450px;
+        @media screen and (max-width: 1170px) and (min-width: 980px) {
+            gap: 350px;
+        }
+        @media screen and (max-width: 980px) and (min-width: 760px) {
+            gap: 250px;
+        }
     }
     &__title {
         @include text();
@@ -61,12 +65,7 @@ main {
         font-size: 4vh;
         text-align: center;
         margin-bottom: 0px;
-        &_small {
-            @include text();
-            font-size: 2vh;
-            margin-bottom: 10px;
-            text-align: center;
-        }
+        margin: 0px;
     }
     &__options {
         padding-left: 10px;
@@ -100,6 +99,9 @@ main {
         transform: translate(-50%,-50%);
         display: flex;
         gap: 50px;
+        @media screen and (max-width: 980px) and (min-width: 760px) {
+            gap: 20px;
+        }
     }
     &__field {
         max-width: 450px;
@@ -205,6 +207,10 @@ main {
                     background-color: $lightgray;
                     cursor: auto;
                 }
+                @media screen and (max-width: 980px) and (min-width: 760px) {
+                    width: 18px;
+                    height: 18px;
+                }
             }
             &_clean {
                 background-color: $lightgray;
@@ -255,6 +261,9 @@ main {
                     box-shadow: 0 2px 7px $black;
                 }
             }
+            @media screen and (max-width: 980px) and (min-width: 760px) {
+                width: 280px;
+            }
         }
         &_newGame {
             width: 300px;
@@ -278,6 +287,9 @@ main {
                 transform: translateY(2px);
                 box-shadow: 0 5px 10px $black;
             }
+            @media screen and (max-width: 980px) and (min-width: 760px) {
+                width: 280px;
+            }
         }
         
     }
@@ -299,6 +311,9 @@ main {
     &__img {
         height: 100%;
         width: 16vh;
+        @media screen and (max-width: 1170px) {
+            width: 13vh;
+        }
     }
     &__title {
         @include text();

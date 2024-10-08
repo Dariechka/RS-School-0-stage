@@ -29,11 +29,20 @@ main {
   margin: 0 auto;
 }
 .game__top {
-  width: 50vw;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 30px;
+  gap: 450px;
+}
+@media screen and (max-width: 1170px) and (min-width: 980px) {
+  .game__top {
+    gap: 350px;
+  }
+}
+@media screen and (max-width: 980px) and (min-width: 760px) {
+  .game__top {
+    gap: 250px;
+  }
 }
 .game__title {
   font-family: "Lora", serif;
@@ -45,16 +54,7 @@ main {
   font-size: 4vh;
   text-align: center;
   margin-bottom: 0px;
-}
-.game__title_small {
-  font-family: "Lora", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 3vh;
-  color: #1B1212;
-  font-size: 2vh;
-  margin-bottom: 10px;
-  text-align: center;
+  margin: 0px;
 }
 .game__options {
   padding-left: 10px;
@@ -92,6 +92,11 @@ main {
   transform: translate(-50%, -50%);
   display: flex;
   gap: 50px;
+}
+@media screen and (max-width: 980px) and (min-width: 760px) {
+  .game__wraper {
+    gap: 20px;
+  }
 }
 .game__field {
   max-width: 450px;
@@ -215,6 +220,12 @@ main {
   background-color: #ededed;
   cursor: auto;
 }
+@media screen and (max-width: 980px) and (min-width: 760px) {
+  .game__controlls_top_button {
+    width: 18px;
+    height: 18px;
+  }
+}
 .game__controlls_top_clean {
   background-color: #ededed;
   font-family: "Lora", serif;
@@ -272,6 +283,11 @@ main {
   background-color: #E5E4E2;
   box-shadow: 0 2px 7px #1B1212;
 }
+@media screen and (max-width: 980px) and (min-width: 760px) {
+  .game__controlls_numbers {
+    width: 280px;
+  }
+}
 .game__controlls_newGame {
   width: 300px;
   height: 60px;
@@ -299,6 +315,11 @@ main {
   transform: translateY(2px);
   box-shadow: 0 5px 10px #1B1212;
 }
+@media screen and (max-width: 980px) and (min-width: 760px) {
+  .game__controlls_newGame {
+    width: 280px;
+  }
+}
 
 .footer {
   max-width: 1300px;
@@ -319,6 +340,11 @@ main {
 .footer__img {
   height: 100%;
   width: 16vh;
+}
+@media screen and (max-width: 1170px) {
+  .footer__img {
+    width: 13vh;
+  }
 }
 .footer__title {
   font-family: "Lora", serif;
