@@ -62,7 +62,7 @@ main {
   gap: 5px;
 }
 .game__options_rules {
-  height: 40px;
+  height: 36px;
   border-radius: 8px;
   background-color: #ededed;
   display: flex;
