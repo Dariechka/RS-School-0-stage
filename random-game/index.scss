@@ -1,0 +1,421 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+$text-font: "Lora", serif;
+$red: #FAA0A0;
+$black: #1B1212;
+$white: #FFFFFF;
+$gray: #E5E4E2;
+$lightgray:#ededed;
+$blue: #3187A2;
+$lightblue: #DEEFF5;
+$hover-lightblue: #7CC1D7;
+$medium: 1100px;
+
+@mixin text() {
+    font-family: $text-font;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3vh;
+    color: $black;
+}
+
+html, body {
+    height: 100vh;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-size: cover;
+    background-position: top;
+}
+
+main {
+    height: 77vh;
+}
+
+.img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.game {
+    max-width: 1300px;
+    overflow: hidden;
+    margin: 0 auto;
+    &__top {
+        display: flex;
+        align-items: center;
+        margin-top: 30px;
+        gap: 450px;
+        @media screen and (max-width: 1170px) and (min-width: 980px) {
+            gap: 350px;
+        }
+        @media screen and (max-width: 980px) and (min-width: 760px) {
+            gap: 250px;
+        }
+    }
+    &__title {
+        @include text();
+        font-style: italic;
+        font-size: 4vh;
+        text-align: center;
+        margin-bottom: 0px;
+        margin: 0px;
+    }
+    &__options {
+        padding-left: 10px;
+        display: flex;
+        gap: 5px;
+        &_rules {
+            height: 40px;
+            border-radius: 8px;
+            background-color: $lightgray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            @include text();
+            font-size: 2vh;
+            &:hover {
+                background-color: $gray; 
+            }
+            &:active {
+                background-color: $gray; 
+                box-shadow: 0 2px 7px $black;
+            }
+        }
+    }
+    &__wraper {
+        max-width: 800px;
+        max-height: 450px;
+        position: fixed;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        display: flex;
+        gap: 50px;
+        @media screen and (max-width: 980px) and (min-width: 760px) {
+            gap: 20px;
+        }
+    }
+    &__field {
+        max-width: 450px;
+        max-height: 450px;
+        cursor: pointer;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(146px,1fr));
+        grid-template-rows: repeat(3, minmax(146px,1fr));
+        border: 3px solid $black;
+        grid-gap: 3px;
+        background-color: $black;
+        &_miniGrid {
+            background-color: $white;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(47.33px,1fr));
+            grid-template-rows: repeat(3, minmax(47.33px,1fr));
+            transition: all 0.3s linear;
+            &[hover="hover"] {
+                background-color: $lightgray;
+            }
+            &_cell {
+                border-bottom: 1px solid $gray;
+                border-right: 1px solid $gray;
+                border-top: 1px solid $gray;
+                border-left: 1px solid $gray;
+                @include text();
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &:active {
+                    background-color: $lightblue;
+                }
+                &[hover="hover"] {
+                    background-color: $lightgray;
+                }
+                &[checked="checked"] {
+                    background-color: $lightblue;
+                }
+            }
+            &_cell:first-child {
+                border-top: 1px solid transparent;
+                border-left: 1px solid transparent;
+            }
+            &_cell:last-child {
+                border-bottom: 1px solid transparent;
+                border-right: 1px solid transparent;
+            }
+            &_cell:nth-child(2) {
+                border-top: 1px solid transparent;
+            }
+            &_cell:nth-child(3) {
+                border-top: 1px solid transparent;
+                border-right: 1px solid transparent;
+            }
+            &_cell:nth-child(4) {
+                border-left: 1px solid transparent;
+            }
+            &_cell:nth-child(6) {
+                border-right: 1px solid transparent;
+            }
+            &_cell:nth-child(7) {
+                border-left: 1px solid transparent;
+                border-bottom: 1px solid transparent;
+            }
+            &_cell:nth-child(8) {
+                border-bottom: 1px solid transparent;
+            }
+        }
+    }
+    &__controlls {
+        max-width: 300px;
+        max-height: 450px;
+        display: flex;
+        flex-flow: column wrap;
+        align-content: space-between;
+        justify-content: space-between;
+        &_top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            &_mistakes {
+                @include text();
+                font-size: 2.5vh;
+                &_number {
+                    @include text();
+                    font-size: 2.5vh;
+                }
+            }
+            &_time {
+                @include text();
+            }
+            &_button {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: $hover-lightblue;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                &:disabled,
+                &[disabled] {
+                    background-color: $lightgray;
+                    cursor: auto;
+                }
+                @media screen and (max-width: 980px) and (min-width: 760px) {
+                    width: 18px;
+                    height: 18px;
+                }
+            }
+            &_clean {
+                background-color: $lightgray;
+                @include text();
+                color: $blue;
+                font-size: 2vh;
+                border-radius: 8px;
+                border: none;
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                &:hover {
+                    background-color: $gray; 
+                }
+                &:active {
+                    background-color: $gray; 
+                    box-shadow: 0 2px 7px $black;
+                }
+                &_icon {
+                    fill: $blue;
+                }
+            }
+        }
+        &_numbers {
+            max-width: 300px;
+            max-height: 300px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(90px,1fr));
+            grid-template-rows: repeat(3, minmax(90px,1fr));
+            border: 4px solid $white;
+            grid-gap: 4px;
+            background-color: $white;
+            &_num {
+                background-color: $lightgray;
+                @include text();
+                color: $blue;
+                font-size: 4vh;
+                border-radius: 8px;
+                border: none;
+                cursor: pointer;
+                &:hover {
+                    background-color: $gray; 
+                }
+                &:active {
+                    background-color: $gray; 
+                    box-shadow: 0 2px 7px $black;
+                }
+            }
+            @media screen and (max-width: 980px) and (min-width: 760px) {
+                width: 280px;
+            }
+        }
+        &_newGame {
+            width: 300px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include text();
+            color: $white;
+            background-color: $blue;
+            border: none;
+            border-radius: 8px;
+            position: relative;
+            transition: all .2s ease-in-out;
+            cursor: pointer;
+            &:hover {
+                background-color: $hover-lightblue;
+            }
+            &:active {
+                background-color: $hover-lightblue;
+                transform: translateY(2px);
+                box-shadow: 0 5px 10px $black;
+            }
+            @media screen and (max-width: 980px) and (min-width: 760px) {
+                width: 280px;
+            }
+        }
+        
+    }
+}
+
+.footer {
+    max-width: 1300px;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 3vh 2vh;
+    @media screen and (max-width: $medium) {
+        padding: 2vh 1.5vh;
+    }
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__img {
+        height: 100%;
+        width: 16vh;
+        @media screen and (max-width: 1170px) {
+            width: 13vh;
+        }
+    }
+    &__title {
+        @include text();
+    }
+}
+
+.active {
+    background-color: $lightblue;
+}
+
+.hide {
+    background-color: $white;
+    color: $white;
+    font-size: 4vh;
+    border-radius: 8px;
+    border: none;
+    cursor: auto;
+    &:hover {
+        background-color: $white;
+    }
+    &:active {
+        background-color: $white; 
+        box-shadow: none;
+    }
+}
+
+.modal {
+    &__window {
+        z-index: 1000;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 900px;
+        padding: 40px;
+        border: 1px solid $black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        background-color: $lightgray;
+    }
+    &__text {
+        @include text();
+    }
+    &__button {
+        width: 300px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include text();
+            color: $white;
+            background-color: $blue;
+            border: none;
+            border-radius: 8px;
+            position: relative;
+            transition: all .2s ease-in-out;
+            cursor: pointer;
+            &:hover {
+                background-color: $hover-lightblue;
+            }
+            &:active {
+                background-color: $hover-lightblue;
+                transform: translateY(2px);
+                box-shadow: 0 5px 10px $black;
+            }
+    }
+    &__grid {
+        margin: 30px 5px;
+        width: 800px;
+        display: grid;
+        grid-template-columns: 320px 236px 236px;
+        grid-template-rows: repeat(11, 1fr);
+        border: 3px solid $black;
+        grid-gap: 1px;
+        background-color: $black;
+        &_cell {
+            background-color: $lightgray;
+            @include text();
+            color: $blue;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        } 
+    }
+}
+
+.input {
+    color: $black;
+}
+
+.error {
+    background-color: $red;
+}
+
+.pause {
+    display: none;
+}
+
+.reserve {
+    display: none;
+}

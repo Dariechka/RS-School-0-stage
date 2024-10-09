@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random-game</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <main>
+        <audio src="./assets/sounds/start-game.mp3" preload="metadata" class="audio-start"></audio>
+        <audio src="./assets/sounds/mistake.mp3" preload="metadata" class="audio-mistake"></audio>
+        <audio src="./assets/sounds/complete.mp3" preload="metadata" class="audio-complete"></audio>
+        <div class="game">
+            <div class="game__top">
+                <div class="game__options">
+                    <button class="game__options_rules rules">Rules</button>
+                    <button class="game__options_rules results">Your results</button>
+                </div>
+                <h1 class="game__title">Sudoku</h1>
+            </div>
+            <div class="game__wraper">
+                <div class="game__field reserve">
+                    <div class="game__field_miniGrid 1">
+                        <div class="game__field_miniGrid_cell 1"></div>
+                        <div class="game__field_miniGrid_cell 2"></div>
+                        <div class="game__field_miniGrid_cell 3"></div>
+                        <div class="game__field_miniGrid_cell 4"></div>
+                        <div class="game__field_miniGrid_cell 5"></div>
+                        <div class="game__field_miniGrid_cell 6"></div>
+                        <div class="game__field_miniGrid_cell 7"></div>
+                        <div class="game__field_miniGrid_cell 8"></div>
+                        <div class="game__field_miniGrid_cell 9"></div>
+                    </div>
+                    <div class="game__field_miniGrid 2">
+                        <div class="game__field_miniGrid_cell 1"></div>
+                        <div class="game__field_miniGrid_cell 2"></div>
+                        <div class="game__field_miniGrid_cell 3"></div>
+                        <div class="game__field_miniGrid_cell 4"></div>
+                        <div class="game__field_miniGrid_cell 5"></div>
+                        <div class="game__field_miniGrid_cell 6"></div>
+                        <div class="game__field_miniGrid_cell 7"></div>
+                        <div class="game__field_miniGrid_cell 8"></div>
+                        <div class="game__field_miniGrid_cell 9"></div>
+                    </div>
+                    <div class="game__field_miniGrid 3">
+                        <div class="game__field_miniGrid_cell 1"></div>
+                        <div class="game__field_miniGrid_cell 2"></div>
+                        <div class="game__field_miniGrid_cell 3"></div>
+                        <div class="game__field_miniGrid_cell 4"></div>
+                        <div class="game__field_miniGrid_cell 5"></div>
+                        <div class="game__field_miniGrid_cell 6"></div>
+                        <div class="game__field_miniGrid_cell 7"></div>
+                        <div class="game__field_miniGrid_cell 8"></div>
+                        <div class="game__field_miniGrid_cell 9"></div>
+                    </div>
+                    <div class="game__field_miniGrid 4">
+                        <div class="game__field_miniGrid_cell 1"></div>
+                        <div class="game__field_miniGrid_cell 2"></div>
+                        <div class="game__field_miniGrid_cell 3"></div>
+                        <div class="game__field_miniGrid_cell 4"></div>
+                        <div class="game__field_miniGrid_cell 5"></div>
+                        <div class="game__field_miniGrid_cell 6"></div>
+                        <div class="game__field_miniGrid_cell 7"></div>
+                        <div class="game__field_miniGrid_cell 8"></div>
+                        <div class="game__field_miniGrid_cell 9"></div>
+                    </div>
+                    <div class="game__field_miniGrid 5">
+                        <div class="game__field_miniGrid_cell 1"></div>
+                        <div class="game__field_miniGrid_cell 2"></div>
+                        <div class="game__field_miniGrid_cell 3"></div>
+                        <div class="game__field_miniGrid_cell 4"></div>
+                        <div class="game__field_miniGrid_cell 5"></div>
+                        <div class="game__field_miniGrid_cell 6"></div>
+                        <div class="game__field_miniGrid_cell 7"></div>
+                        <div class="game__field_miniGrid_cell 8"></div>
+                        <div class="game__field_miniGrid_cell 9"></div>
+                    </div>
+                    <div class="game__field_miniGrid 6">
+                        <div class="game__field_miniGrid_cell 1"></div>
+                        <div class="game__field_miniGrid_cell 2"></div>
+                        <div class="game__field_miniGrid_cell 3"></div>
+                        <div class="game__field_miniGrid_cell 4"></div>
+                        <div class="game__field_miniGrid_cell 5"></div>
+                        <div class="game__field_miniGrid_cell 6"></div>
+                        <div class="game__field_miniGrid_cell 7"></div>
+                        <div class="game__field_miniGrid_cell 8"></div>
+                        <div class="game__field_miniGrid_cell 9"></div>
+                    </div>
+                    <div class="game__field_miniGrid 7">
+                        <div class="game__field_miniGrid_cell 1"></div>
+                        <div class="game__field_miniGrid_cell 2"></div>
+                        <div class="game__field_miniGrid_cell 3"></div>
+                        <div class="game__field_miniGrid_cell 4"></div>
+                        <div class="game__field_miniGrid_cell 5"></div>
+                        <div class="game__field_miniGrid_cell 6"></div>
+                        <div class="game__field_miniGrid_cell 7"></div>
+                        <div class="game__field_miniGrid_cell 8"></div>
+                        <div class="game__field_miniGrid_cell 9"></div>
+                    </div>
+                    <div class="game__field_miniGrid 8">
+                        <div class="game__field_miniGrid_cell 1"></div>
+                        <div class="game__field_miniGrid_cell 2"></div>
+                        <div class="game__field_miniGrid_cell 3"></div>
+                        <div class="game__field_miniGrid_cell 4"></div>
+                        <div class="game__field_miniGrid_cell 5"></div>
+                        <div class="game__field_miniGrid_cell 6"></div>
+                        <div class="game__field_miniGrid_cell 7"></div>
+                        <div class="game__field_miniGrid_cell 8"></div>
+                        <div class="game__field_miniGrid_cell 9"></div>
+                    </div>
+                    <div class="game__field_miniGrid 9">
+                        <div class="game__field_miniGrid_cell 1"></div>
+                        <div class="game__field_miniGrid_cell 2"></div>
+                        <div class="game__field_miniGrid_cell 3"></div>
+                        <div class="game__field_miniGrid_cell 4"></div>
+                        <div class="game__field_miniGrid_cell 5"></div>
+                        <div class="game__field_miniGrid_cell 6"></div>
+                        <div class="game__field_miniGrid_cell 7"></div>
+                        <div class="game__field_miniGrid_cell 8"></div>
+                        <div class="game__field_miniGrid_cell 9"></div>
+                    </div>
+                </div>
+                <div class="game__field main">
+                    <div class="game__field_miniGrid 1">
+                        <div class="game__field_miniGrid_cell 1"></div>
+                        <div class="game__field_miniGrid_cell 2"></div>
+                        <div class="game__field_miniGrid_cell 3"></div>
+                        <div class="game__field_miniGrid_cell 4"></div>
+                        <div class="game__field_miniGrid_cell 5"></div>
+                        <div class="game__field_miniGrid_cell 6"></div>
+                        <div class="game__field_miniGrid_cell 7"></div>
+                        <div class="game__field_miniGrid_cell 8"></div>
+                        <div class="game__field_miniGrid_cell 9"></div>
+                    </div>
+                    <div class="game__field_miniGrid 2">
+                        <div class="game__field_miniGrid_cell 1"></div>
+                        <div class="game__field_miniGrid_cell 2"></div>
+                        <div class="game__field_miniGrid_cell 3"></div>
+                        <div class="game__field_miniGrid_cell 4"></div>
+                        <div class="game__field_miniGrid_cell 5"></div>
+                        <div class="game__field_miniGrid_cell 6"></div>
+                        <div class="game__field_miniGrid_cell 7"></div>
+                        <div class="game__field_miniGrid_cell 8"></div>
+                        <div class="game__field_miniGrid_cell 9"></div>
+                    </div>
+                    <div class="game__field_miniGrid 3">
+                        <div class="game__field_miniGrid_cell 1"></div>
+                        <div class="game__field_miniGrid_cell 2"></div>
+                        <div class="game__field_miniGrid_cell 3"></div>
+                        <div class="game__field_miniGrid_cell 4"></div>
+                        <div class="game__field_miniGrid_cell 5"></div>
+                        <div class="game__field_miniGrid_cell 6"></div>
+                        <div class="game__field_miniGrid_cell 7"></div>
+                        <div class="game__field_miniGrid_cell 8"></div>
+                        <div class="game__field_miniGrid_cell 9"></div>
+                    </div>
+                    <div class="game__field_miniGrid 4">
+                        <div class="game__field_miniGrid_cell 1"></div>
+                        <div class="game__field_miniGrid_cell 2"></div>
+                        <div class="game__field_miniGrid_cell 3"></div>
+                        <div class="game__field_miniGrid_cell 4"></div>
+                        <div class="game__field_miniGrid_cell 5"></div>
+                        <div class="game__field_miniGrid_cell 6"></div>
+                        <div class="game__field_miniGrid_cell 7"></div>
+                        <div class="game__field_miniGrid_cell 8"></div>
+                        <div class="game__field_miniGrid_cell 9"></div>
+                    </div>
+                    <div class="game__field_miniGrid 5">
+                        <div class="game__field_miniGrid_cell 1"></div>
+                        <div class="game__field_miniGrid_cell 2"></div>
+                        <div class="game__field_miniGrid_cell 3"></div>
+                        <div class="game__field_miniGrid_cell 4"></div>
+                        <div class="game__field_miniGrid_cell 5"></div>
+                        <div class="game__field_miniGrid_cell 6"></div>
+                        <div class="game__field_miniGrid_cell 7"></div>
+                        <div class="game__field_miniGrid_cell 8"></div>
+                        <div class="game__field_miniGrid_cell 9"></div>
+                    </div>
+                    <div class="game__field_miniGrid 6">
+                        <div class="game__field_miniGrid_cell 1"></div>
+                        <div class="game__field_miniGrid_cell 2"></div>
+                        <div class="game__field_miniGrid_cell 3"></div>
+                        <div class="game__field_miniGrid_cell 4"></div>
+                        <div class="game__field_miniGrid_cell 5"></div>
+                        <div class="game__field_miniGrid_cell 6"></div>
+                        <div class="game__field_miniGrid_cell 7"></div>
+                        <div class="game__field_miniGrid_cell 8"></div>
+                        <div class="game__field_miniGrid_cell 9"></div>
+                    </div>
+                    <div class="game__field_miniGrid 7">
+                        <div class="game__field_miniGrid_cell 1"></div>
+                        <div class="game__field_miniGrid_cell 2"></div>
+                        <div class="game__field_miniGrid_cell 3"></div>
+                        <div class="game__field_miniGrid_cell 4"></div>
+                        <div class="game__field_miniGrid_cell 5"></div>
+                        <div class="game__field_miniGrid_cell 6"></div>
+                        <div class="game__field_miniGrid_cell 7"></div>
+                        <div class="game__field_miniGrid_cell 8"></div>
+                        <div class="game__field_miniGrid_cell 9"></div>
+                    </div>
+                    <div class="game__field_miniGrid 8">
+                        <div class="game__field_miniGrid_cell 1"></div>
+                        <div class="game__field_miniGrid_cell 2"></div>
+                        <div class="game__field_miniGrid_cell 3"></div>
+                        <div class="game__field_miniGrid_cell 4"></div>
+                        <div class="game__field_miniGrid_cell 5"></div>
+                        <div class="game__field_miniGrid_cell 6"></div>
+                        <div class="game__field_miniGrid_cell 7"></div>
+                        <div class="game__field_miniGrid_cell 8"></div>
+                        <div class="game__field_miniGrid_cell 9"></div>
+                    </div>
+                    <div class="game__field_miniGrid 9">
+                        <div class="game__field_miniGrid_cell 1"></div>
+                        <div class="game__field_miniGrid_cell 2"></div>
+                        <div class="game__field_miniGrid_cell 3"></div>
+                        <div class="game__field_miniGrid_cell 4"></div>
+                        <div class="game__field_miniGrid_cell 5"></div>
+                        <div class="game__field_miniGrid_cell 6"></div>
+                        <div class="game__field_miniGrid_cell 7"></div>
+                        <div class="game__field_miniGrid_cell 8"></div>
+                        <div class="game__field_miniGrid_cell 9"></div>
+                    </div>
+                </div>
+                <div class="game__controlls">
+                    <div class="game__controlls_top">
+                        <div class="game__controlls_top_mistakes">Mistakes: <span class="game__controlls_top_mistakes_number">0</span>/3</div>
+                        <button class="game__controlls_top_clean">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="game__controlls_top_clean_icon">
+                                <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828zm2.121.707a1 1 0 0 0-1.414 0L4.16 7.547l5.293 5.293 4.633-4.633a1 1 0 0 0 0-1.414zM8.746 13.547 3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293z"/>
+                            </svg>
+                            Clean
+                        </button>
+                        <div class="game__controlls_top_time">00:00</div>
+                        <div class="game__controlls_top_button pause">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="#5f6368">
+                                <path d="M520-200v-560h240v560H520Zm-320 0v-560h240v560H200Zm400-80h80v-400h-80v400Zm-320 0h80v-400h-80v400Zm0-400v400-400Zm320 0v400-400Z"/>
+                            </svg>
+                        </div>
+                        <div class="game__controlls_top_button play">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="#5f6368">
+                                <path d="M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="game__controlls_numbers">
+                        <button class="game__controlls_numbers_num">1</button>
+                        <button class="game__controlls_numbers_num">2</button>
+                        <button class="game__controlls_numbers_num">3</button>
+                        <button class="game__controlls_numbers_num">4</button>
+                        <button class="game__controlls_numbers_num">5</button>
+                        <button class="game__controlls_numbers_num">6</button>
+                        <button class="game__controlls_numbers_num">7</button>
+                        <button class="game__controlls_numbers_num">8</button>
+                        <button class="game__controlls_numbers_num">9</button>
+                    </div>
+                    <button class="game__controlls_newGame">New Game</button> 
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container footer__container">
+            <a href="https://github.com/Dariechka" rel="my-github" target="_blank" class="footer__img">
+                <img src="./assets/img/github.png" alt="github-logo" class="img">
+            </a>
+            <p class="footer__title">CREATED IN 2024</p>
+            <a href="https://rs.school/" rel="rs-school-logo" target="_blank" class="footer__img">
+                <img src="./assets/img/logo-rsschool3.png" alt="school-logo" class="img">
+            </a>
+        </div>
+    </footer>
+    <script src="./index.js"></script>
+</body>
