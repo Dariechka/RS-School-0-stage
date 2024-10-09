@@ -274,7 +274,7 @@
         pauseTimer();
         document.body.insertAdjacentHTML(
             `afterbegin`,
-        `<div class="modal__window">
+        `<div class="modal__window fail">
             <div class="modal__window_img">
                 <img src="./assets/img/potracheno.png" alt="wasted" class="img">
             </div>
@@ -286,7 +286,7 @@
     function openResults(lastGame) {
         document.body.insertAdjacentHTML(
             `afterbegin`,
-        `<div class="modal__window">
+        `<div class="modal__window openedResults">
             <h2 class="modal__text">The history of your successful games</h2>
             <div class="modal__grid">
                 <div class="modal__grid_cell">Game number</div>
@@ -410,9 +410,12 @@
     });
 
     rules.addEventListener('click', () => {
+        if (document.querySelector('.openedResults')){
+            return;
+        }
         document.body.insertAdjacentHTML(
             `afterbegin`,
-        `<div class="modal__window">
+        `<div class="modal__window openedRules">
             <h2 class="modal__text">The goal of sudoku is simple: fill in the numbers 1-9 exactly once in every row, column, and 3x3 region.</h2>
             <div class="modal__window_img">
                 <img src="./assets/img/sudoku-rules.png" alt="wasted" class="img">
@@ -424,7 +427,12 @@
         })
     });
 
-    results.addEventListener('click', () => openResults());
+    results.addEventListener('click', () => {
+        if (document.querySelector('.openedRules')){
+            return;
+        }
+        openResults();
+    });
 
     digitButtons.forEach(digitButton => digitButton.addEventListener('click', () => {
         if (document.querySelectorAll('.game__field_miniGrid_cell[checked="checked"]').length > 1) {
